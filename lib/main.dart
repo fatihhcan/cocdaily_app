@@ -1,4 +1,8 @@
+import 'package:cocdaily_app/core/constants/init/theme/light/app_theme_light.dart';
+import 'package:cocdaily_app/view/authentication/login/view/login_view.dart';
+import 'package:cocdaily_app/view/authentication/register/view/register_view.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 void main() => runApp(const MyApp());
 
@@ -7,17 +11,13 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Material App',
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text('Material App Bar'),
-        ),
-        body: Center(
-          child: Container(
-            child: Text('Hello World'),
-          ),
-        ),
+    return ScreenUtilInit(
+           designSize: const Size(428,926),
+      builder:() => MaterialApp(
+        debugShowCheckedModeBanner: false,
+        theme: AppThemeLight.instance.theme,
+        title: 'Material App',
+        home: RegisterView()
       ),
     );
   }
