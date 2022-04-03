@@ -9,7 +9,7 @@ class AuthBackGroundBottom extends StatelessWidget {
   final String? title;
   final String? titleButton;
   final Function()? onPressed;
-  AuthBackGroundBottom({Key? key, required this.title, this.titleButton, this.onPressed})
+  const AuthBackGroundBottom({Key? key, required this.title, this.titleButton, this.onPressed})
       : super(key: key);
 
   @override

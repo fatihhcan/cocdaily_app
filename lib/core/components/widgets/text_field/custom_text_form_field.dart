@@ -5,11 +5,17 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CustomTextFormField extends StatelessWidget {
   final String? labelText;
-  final TextEditingController controller;
+ // final TextEditingController controller;
   final Icon? icon;
+  final ValueChanged<String> onChanged;
+  final TextInputType? keyboardType;
+  final String? errorText;
+  final bool isPasswordField;
+  final bool isRequiredField;
+  final String hint;
   
 
-  const CustomTextFormField({Key? key, this.labelText, required this.controller, this.icon}) : super(key: key);
+  const CustomTextFormField({Key? key, this.labelText,  this.icon, required this.onChanged, this.keyboardType, this.errorText,  this.isPasswordField=false,  this.isRequiredField=false, this.hint=''}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -18,9 +24,16 @@ class CustomTextFormField extends StatelessWidget {
           height: 45.h,
           child: TextFormField(
            style: context.textTheme.overline,
-            controller: controller,
+         //   controller: controller,
             cursorColor: context.customColors!.doveGray,
+            onChanged: onChanged,
+            keyboardType: keyboardType,
+            obscureText: isPasswordField,
             decoration: InputDecoration(
+            hintText: isRequiredField ? '$hint*' : hint,
+
+            //errorText: errorText,
+            
               iconColor: context.customColors!.doveGray,
               prefixIconColor: context.customColors!.doveGray,
               enabledBorder: OutlineInputBorder(
@@ -35,6 +48,7 @@ class CustomTextFormField extends StatelessWidget {
               labelText: labelText,
               labelStyle: context.textTheme.overline,
               prefixIcon: icon
+              
             ),
           ),
         );

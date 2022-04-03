@@ -1,6 +1,9 @@
 import 'package:cocdaily_app/core/extensions/context_extension.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import '../../../../core/base/cubits/authentication_cubit/login_cubit/login_cubit.dart';
 
 class LoginButton extends StatelessWidget {
   final Function()? onPressed;
@@ -10,7 +13,7 @@ class LoginButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextButton(
-      onPressed: onPressed,
+      onPressed: () => context.read<LoginCubit>().logInWithCredentials(),
       child: Column(
         children: [
           Text(

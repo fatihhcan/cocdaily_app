@@ -1,11 +1,10 @@
 
 import 'package:flutter/material.dart';
 
-import '../constants/app/app_constants.dart';
 
 extension StringExtension on String {
 
-  String? get isValidEmail => contains(RegExp(ApplicationConstants.EMAIL_REGEX)) ? null : 'Email is not valid';
+
 }
 
 extension SVGImagePathExtension on String {
