@@ -16,6 +16,7 @@ class ColorThemeLight {
   final Color manatee = const Color(0xff8785A2);
   final Color pippin = const Color(0xffFFE2E2);
   final Color doveGray = const Color(0xff707070);
+  final Color hitPink = const Color(0xffFFAB76);
 
   ColorScheme get colorScheme => ColorScheme(
       primary: doveGray, //xx

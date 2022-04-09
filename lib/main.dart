@@ -1,6 +1,8 @@
 import 'package:cocdaily_app/core/base/cubits/authentication_cubit/login_cubit/login_cubit.dart';
 import 'package:cocdaily_app/core/constants/init/theme/light/app_theme_light.dart';
 import 'package:cocdaily_app/view/authentication/login/view/login_view.dart';
+import 'package:cocdaily_app/view/home/view/home_view.dart';
+import 'package:cocdaily_app/view/product/product_list/view/product_list_view.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -26,7 +28,7 @@ class MyApp extends StatelessWidget {
           home: BlocProvider(
             lazy:false,
             create: (_) => LoginCubit(),
-            child: const LoginView(),
+            child: const ProductListView(),
           )),
     );
   }

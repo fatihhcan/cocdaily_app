@@ -1,14 +1,11 @@
 import 'package:bloc/bloc.dart';
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_auth_oauth/firebase_auth_oauth.dart';
 import 'package:flutter/services.dart';
 import 'package:formz/formz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-
 import '../../../validations/email.dart';
 import '../../../validations/password.dart';
-
 
 part 'login_state.dart';
 part 'login_cubit.freezed.dart';
@@ -64,12 +61,6 @@ class LoginCubit extends Cubit<LoginState> {
         .openSignInFlow(provider, scopes, parameters)
         .then((value) => value);
   }
-
-
-
-
-
-
   void resetPassword() async {
     try {
       emit(state.copyWith(status: FormzStatus.submissionInProgress));

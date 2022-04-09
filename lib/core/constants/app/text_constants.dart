@@ -7,9 +7,19 @@ class TextConstants {
   static const password = 'Password';
   static const fullName = 'Full Name';
   static const forgotPassword = 'Forgot Password?';
-  static const dontHaveAnAccount = 'Don''t have an account?';
+  static const dontHaveAnAccount = 'Don' 't have an account?';
   static const createAccount = 'Create Account';
   static const alreadyHaveAnAccount = 'Already have an account?';
   static const welcomeTo = 'Welcome to';
-
+  static const welcomeToTheCocktailWorld = "Welcome to the cocktail world, ";
+  static const categories = "Categories";
+  static const nonAlcoholicCocktails = "Non-Alcoholic \nCocktails";
+  static const alcoholicCocktails = "Alcoholic \nCocktails";
+  static const clsoholicCocktails = "Classic \nCocktails";
+  static const favoritesoholicCocktails = "Favorites \nCocktails";
+  static const favorites = "Favorites";
+  static const appBarNonAlcoholicCocktails = "Non-Alcoholic Cocktails";
+  static const appBarAlcoholicCocktails = "Alcoholic Cocktails";
+  static const appBarClassicCocktails = "Classic Cocktails";
+  static const appBarFavoritesCocktails = "Favorites Cocktails";
 }

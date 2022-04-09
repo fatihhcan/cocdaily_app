@@ -3,14 +3,15 @@ import 'package:cocdaily_app/core/components/widgets/cards/auth_background_botto
 import 'package:cocdaily_app/core/constants/app/text_constants.dart';
 import 'package:cocdaily_app/core/constants/image/image_constants.dart';
 import 'package:cocdaily_app/core/extensions/context_extension.dart';
-import 'package:cocdaily_app/view/authentication/register/view/components/sign_up_input_fields.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:formz/formz.dart';
 import '../../../../core/base/cubits/authentication_cubit/sign_up_cubit/sign_up_cubit.dart';
 import '../../../../core/components/widgets/cards/auth_background_top.dart';
-import 'components/sign_up_button.dart';
+import '../components/sign_up_button.dart';
+import '../components/sign_up_input_fields.dart';
+
 
 class SignUpView extends StatelessWidget {
   const SignUpView({Key? key}) : super(key: key);

@@ -3,7 +3,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/services.dart';
 import 'package:formz/formz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-
 import '../../../validations/email.dart';
 import '../../../validations/name.dart';
 import '../../../validations/password.dart';
