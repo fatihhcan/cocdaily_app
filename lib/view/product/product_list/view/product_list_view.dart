@@ -1,4 +1,3 @@
-import 'package:cocdaily_app/core/components/widgets/app_bar/custom_app_bar.dart';
 import 'package:cocdaily_app/core/constants/app/text_constants.dart';
 import 'package:cocdaily_app/core/constants/image/image_path.dart';
 import 'package:cocdaily_app/core/extensions/context_extension.dart';

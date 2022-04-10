@@ -17,6 +17,7 @@ class ColorThemeLight {
   final Color pippin = const Color(0xffFFE2E2);
   final Color doveGray = const Color(0xff707070);
   final Color hitPink = const Color(0xffFFAB76);
+  final Color bossanova = const Color(0xff463268);
 
   ColorScheme get colorScheme => ColorScheme(
       primary: doveGray, //xx

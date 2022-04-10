@@ -1,5 +1,3 @@
-
-
 import 'package:cocdaily_app/core/extensions/string_extension.dart';
 
 class SVGImagePaths {
@@ -24,5 +22,5 @@ class SVGImagePaths {
   final classicCardSVG = 'classic_card'.toSVG;
   final alcoholicCardSVG = 'alcoholic_card'.toSVG;
   final nonAlcoholicCardSVG = 'non_alcoholic_card'.toSVG;
-
+  final splashJSON = 'assets/json/splash.json';   //JSON - SPLASH 
 }

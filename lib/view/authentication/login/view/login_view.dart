@@ -1,5 +1,6 @@
 import 'package:cocdaily_app/core/base/cubits/authentication_cubit/login_cubit/login_cubit.dart';
 import 'package:cocdaily_app/core/components/widgets/buttons/forgot_password_button.dart';
+import 'package:cocdaily_app/core/utility/shared/shared_prefs.dart';
 import 'package:cocdaily_app/view/authentication/login/components/login_button.dart';
 import 'package:cocdaily_app/core/components/widgets/cards/auth_background_bottom.dart';
 import 'package:cocdaily_app/core/constants/app/text_constants.dart';
@@ -12,6 +13,7 @@ import '../../../../core/components/widgets/cards/auth_background_top.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/components/widgets/snackbar/custom_snackbar.dart';
+import '../../../../core/constants/app/app_router_constants.dart';
 
 class LoginView extends StatelessWidget {
   const LoginView({Key? key}) : super(key: key);
@@ -19,30 +21,32 @@ class LoginView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => LoginCubit(),
+      create: (context) => LoginCubit(context),
       child: BlocConsumer<LoginCubit, LoginState>(
         listenWhen: (p, c) => p.status != c.status,
         listener: (context, state) {
-              if (state.status.isSubmissionFailure) {
-                ScaffoldMessenger.of(context)
-                    .showSnackBar(snackBarWhenFailure(snackBarFailureText: state.exceptionError));
-              } else if (state.status.isSubmissionSuccess) {
-                ScaffoldMessenger.of(context).showSnackBar(snackBarWhenSuccess());
-              }
-            },
+          if (state.status.isSubmissionFailure) {
+            ScaffoldMessenger.of(context).showSnackBar(
+                snackBarWhenFailure(snackBarFailureText: state.exceptionError));
+          } else if (state.status.isSubmissionSuccess) {
+            ScaffoldMessenger.of(context).showSnackBar(snackBarWhenSuccess());
+            Navigator.of(context).pushNamed(RouterConstant.HOME_VIEW);
+            SharedPrefs.login();
+          }
+        },
         builder: (context, state) {
-          return buildScaffold(context,state);
+          return buildScaffold(context, state);
         },
       ),
     );
   }
 
-  Scaffold buildScaffold(BuildContext context,LoginState state) => Scaffold(
+  Scaffold buildScaffold(BuildContext context, LoginState state) => Scaffold(
       //key: viewModel.scaffoldState,
       resizeToAvoidBottomInset: false,
-      body: buildBody(context,state));
+      body: buildBody(context, state));
 
-  Column buildBody(BuildContext context,LoginState state) {
+  Column buildBody(BuildContext context, LoginState state) {
     return Column(
       children: [
         backgroundTopWidgetBuild(),
@@ -53,11 +57,11 @@ class LoginView extends StatelessWidget {
         SizedBox(
           height: 60.h,
         ),
-        emailTextFormFieldBuild(context,state),
+        emailTextFormFieldBuild(context, state),
         SizedBox(
           height: 25.h,
         ),
-       passwordTextFormFieldBuild(context,state),
+        passwordTextFormFieldBuild(context, state),
         SizedBox(
           height: 15.h,
         ),
@@ -68,6 +72,7 @@ class LoginView extends StatelessWidget {
       ],
     );
   }
+
   AuthBackGroundBottom backgroundBottomWidgetBuild() => AuthBackGroundBottom(
         onPressed: () {},
         title: TextConstants.dontHaveAnAccount,
@@ -104,7 +109,7 @@ class LoginView extends StatelessWidget {
 
   PasswordInputField passwordTextFormFieldBuild(
           BuildContext context, LoginState state) =>
-     PasswordInputField(state: state);
+      PasswordInputField(state: state);
 
   EmailInputField emailTextFormFieldBuild(
     BuildContext context,

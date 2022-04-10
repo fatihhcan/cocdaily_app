@@ -1,6 +1,8 @@
 import 'package:bloc/bloc.dart';
+import 'package:cocdaily_app/core/constants/app/app_router_constants.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_auth_oauth/firebase_auth_oauth.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:formz/formz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -10,12 +12,11 @@ import '../../../validations/password.dart';
 part 'login_state.dart';
 part 'login_cubit.freezed.dart';
 
-
 class LoginCubit extends Cubit<LoginState> {
-  LoginCubit() : super(const LoginState.initial());
+  LoginCubit(this.context) : super(const LoginState.initial());
 
   final FirebaseAuth _auth = FirebaseAuth.instance;
-
+  final BuildContext context;
 
   void emailChanged(String value) {
     final email = Email.dirty(value);
@@ -53,6 +54,7 @@ class LoginCubit extends Cubit<LoginState> {
           status: FormzStatus.submissionFailure));
     }
   }
+
   Future<void> performLogin(
       {required String provider,
       required scopes,
@@ -61,6 +63,7 @@ class LoginCubit extends Cubit<LoginState> {
         .openSignInFlow(provider, scopes, parameters)
         .then((value) => value);
   }
+
   void resetPassword() async {
     try {
       emit(state.copyWith(status: FormzStatus.submissionInProgress));

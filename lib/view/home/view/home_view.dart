@@ -1,4 +1,3 @@
-import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:cocdaily_app/core/constants/app/text_constants.dart';
 import 'package:cocdaily_app/core/extensions/context_extension.dart';
 import 'package:cocdaily_app/view/home/components/favorites_card.dart';
@@ -135,6 +134,7 @@ class HomeView extends StatelessWidget {
 
   AppBar buildAppBar(BuildContext context) {
     return AppBar(
+      automaticallyImplyLeading:false,
       backgroundColor: context.customColors!.doveGray,
       title: Image.asset(
         ImageConstants.instance.projectIcon,
