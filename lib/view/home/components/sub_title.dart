@@ -14,7 +14,7 @@ class CustomSubTitle extends StatelessWidget {
           padding: EdgeInsets.only(right: 230.w),
           child: Text(
             title!,
-            style: context.textTheme.headline3!.copyWith(fontSize: 25),
+            style: context.textTheme.headline3!.copyWith(fontSize: 25.sp),
           ),
         ),
         SizedBox(height: 5.h),

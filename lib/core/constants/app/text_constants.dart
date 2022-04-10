@@ -22,4 +22,10 @@ class TextConstants {
   static const appBarAlcoholicCocktails = "Alcoholic Cocktails";
   static const appBarClassicCocktails = "Classic Cocktails";
   static const appBarFavoritesCocktails = "Favorites Cocktails";
+  static const settings = "Settings";
+  static const changePassword = "Change Password";
+  static const language = "Language";
+  static const aboutApp = "About App";
+  static const logout = "Logout";
+
 }

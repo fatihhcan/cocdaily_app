@@ -1,8 +1,10 @@
 import 'package:bloc/bloc.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:formz/formz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import '../../../../utility/shared/shared_prefs.dart';
 import '../../../validations/email.dart';
 import '../../../validations/name.dart';
 import '../../../validations/password.dart';
@@ -13,7 +15,7 @@ part 'sign_up_cubit.freezed.dart';
 
 class SignUpCubit extends Cubit<SignUpState> {
   SignUpCubit() : super(const SignUpState.initial());
-
+  final TextEditingController nameController = TextEditingController();
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
   void emailChanged(String value) {
@@ -58,6 +60,11 @@ class SignUpCubit extends Cubit<SignUpState> {
       await _auth.createUserWithEmailAndPassword(
           email: state.email.value, password: state.password.value);
       emit(state.copyWith(status: FormzStatus.submissionSuccess));
+      await SharedPrefs.setUserName(nameController.text);
+      await SharedPrefs.setUserEmail(state.email.value);
+      print("REGISTER NAME ${nameController.text}");
+      print("REGISTER EMAIL ${state.email.value}");
+  
     } on FirebaseAuthException catch (error) {
       emit(state.copyWith(
           exceptionError: error.message.toString(),

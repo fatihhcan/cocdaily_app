@@ -30,7 +30,7 @@ class CustomFavoritesCard extends StatelessWidget {
         padding: EdgeInsets.only(top: 165.h, left: 50.w),
         child: Text(
           "Virgin Mary",
-          style: context.textTheme.headline3!.copyWith(fontSize: 12),
+          style: context.textTheme.headline3!.copyWith(fontSize: 12.sp),
           textAlign: TextAlign.center,
         ),
       );

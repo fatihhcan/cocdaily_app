@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:formz/formz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import '../../../../utility/shared/shared_prefs.dart';
 import '../../../validations/email.dart';
 import '../../../validations/password.dart';
 
@@ -40,6 +41,8 @@ class LoginCubit extends Cubit<LoginState> {
       await _auth.signInWithEmailAndPassword(
           email: state.email.value, password: state.password.value);
       emit(state.copyWith(status: FormzStatus.submissionSuccess));
+      await SharedPrefs.setUserEmail(_auth.currentUser!.email!);
+      print(_auth.currentUser!.email!);
     } on FirebaseAuthException catch (error) {
       emit(state.copyWith(
           exceptionError: error.message.toString(),

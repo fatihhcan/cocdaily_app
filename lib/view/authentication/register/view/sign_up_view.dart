@@ -9,6 +9,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:formz/formz.dart';
 import '../../../../core/base/cubits/authentication_cubit/sign_up_cubit/sign_up_cubit.dart';
 import '../../../../core/components/widgets/cards/auth_background_top.dart';
+import '../../../../core/constants/app/app_router_constants.dart';
+import '../../../../core/utility/shared/shared_prefs.dart';
 import '../components/sign_up_button.dart';
 import '../components/sign_up_input_fields.dart';
 
@@ -28,6 +30,8 @@ class SignUpView extends StatelessWidget {
           var snackBar = const SnackBar(
               content: Text("Success!"), backgroundColor: Colors.green);
           ScaffoldMessenger.of(context).showSnackBar(snackBar);
+          Navigator.of(context).pushNamed(RouterConstant.HOME_VIEW);
+          SharedPrefs.login();
         }
       },
       builder: (context, state) {
@@ -124,5 +128,5 @@ class SignUpView extends StatelessWidget {
 
   NameInputField fullNameTextFormFieldBuild(
           SignUpState state , BuildContext context) =>
-      NameInputField(state: state,);
+      NameInputField(state: state,controller: context.read<SignUpCubit>().nameController,);
 }

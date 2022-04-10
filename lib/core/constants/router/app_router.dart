@@ -2,6 +2,7 @@ import 'package:cocdaily_app/view/authentication/login/view/login_view.dart';
 import 'package:cocdaily_app/view/authentication/register/view/sign_up_view.dart';
 import 'package:cocdaily_app/view/home/view/home_view.dart';
 import 'package:cocdaily_app/view/launch/view/splash_view.dart';
+import 'package:cocdaily_app/view/settings/view/settings_view.dart';
 import 'package:flutter/material.dart';
 import '../app/app_router_constants.dart';
 
@@ -19,6 +20,10 @@ class AppRouter {
       case RouterConstant.HOME_VIEW:
         return MaterialPageRoute(
           builder: (_) => HomeView(),
+        );
+              case RouterConstant.SETTINGS_VIEW:
+        return MaterialPageRoute(
+          builder: (_) => SettingsView(),
         );
 
       default:

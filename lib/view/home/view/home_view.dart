@@ -1,3 +1,4 @@
+import 'package:cocdaily_app/core/constants/app/app_router_constants.dart';
 import 'package:cocdaily_app/core/constants/app/text_constants.dart';
 import 'package:cocdaily_app/core/extensions/context_extension.dart';
 import 'package:cocdaily_app/view/home/components/favorites_card.dart';
@@ -7,6 +8,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../core/constants/image/image_constants.dart';
 import '../../../core/constants/image/image_path.dart';
+import '../../../core/utility/shared/shared_prefs.dart';
 import '../components/categories_card.dart';
 import '../components/sub_title.dart';
 
@@ -128,7 +130,7 @@ class HomeView extends StatelessWidget {
 
   CustomWelcomeCard buildWelcomeCard(BuildContext context) {
     return CustomWelcomeCard(
-      userFullName: "Fatih Can",
+      userFullName: SharedPrefs.getUserName,
     );
   }
 
@@ -147,7 +149,7 @@ class HomeView extends StatelessWidget {
   }
 
   IconButton settingsButton(BuildContext context) => IconButton(
-        onPressed: () {},
+        onPressed: ()=>Navigator.pushNamed(context, RouterConstant.SETTINGS_VIEW),
         icon: const Icon(Icons.settings),
         color: context.customColors!.wildSand,
       );

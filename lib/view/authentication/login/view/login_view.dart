@@ -68,13 +68,13 @@ class LoginView extends StatelessWidget {
         forgotPasswordButtonBuild(),
         loginButtonBuild(context),
         const Spacer(),
-        backgroundBottomWidgetBuild()
+        backgroundBottomWidgetBuild(context)
       ],
     );
   }
 
-  AuthBackGroundBottom backgroundBottomWidgetBuild() => AuthBackGroundBottom(
-        onPressed: () {},
+  AuthBackGroundBottom backgroundBottomWidgetBuild(BuildContext context) => AuthBackGroundBottom(
+        onPressed: () =>Navigator.pushNamed(context, RouterConstant.REGISTER_VIEW),
         title: TextConstants.dontHaveAnAccount,
         titleButton: TextConstants.createAccount,
       );

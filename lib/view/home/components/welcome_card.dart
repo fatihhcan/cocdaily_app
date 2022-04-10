@@ -31,7 +31,7 @@ class CustomWelcomeCard extends StatelessWidget {
                   textStyle: context.textTheme.headline4!.copyWith(
                       fontWeight: FontWeight.bold,
                       color: Colors.white,
-                      fontSize: 15))
+                      fontSize: 15.sp))
             ]),
           ),
         ],
