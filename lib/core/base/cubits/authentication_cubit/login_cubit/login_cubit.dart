@@ -1,5 +1,4 @@
 import 'package:bloc/bloc.dart';
-import 'package:cocdaily_app/core/constants/app/app_router_constants.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_auth_oauth/firebase_auth_oauth.dart';
 import 'package:flutter/material.dart';
@@ -42,7 +41,7 @@ class LoginCubit extends Cubit<LoginState> {
           email: state.email.value, password: state.password.value);
       emit(state.copyWith(status: FormzStatus.submissionSuccess));
       await SharedPrefs.setUserEmail(_auth.currentUser!.email!);
-      print(_auth.currentUser!.email!);
+    
     } on FirebaseAuthException catch (error) {
       emit(state.copyWith(
           exceptionError: error.message.toString(),

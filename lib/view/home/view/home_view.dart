@@ -85,6 +85,7 @@ class HomeView extends StatelessWidget {
         scrollDirection: Axis.horizontal,
         children: [
           CustomCategoriesCard(
+            onTap: () => Navigator.pushNamed(context, RouterConstant.NON_ALCOHOLIC_PRODUCT_VIEW),
             color: context.customColors!.athsSpecial,
             svgName: SVGImagePaths.instance!.categoriesCardNonSVG,
             categoriesTitle: TextConstants.nonAlcoholicCocktails,
@@ -94,6 +95,7 @@ class HomeView extends StatelessWidget {
             width: 15.w,
           ),
           CustomCategoriesCard(
+            onTap: ()=>Navigator.pushNamed(context, RouterConstant.ALCOHOLIC_PRODUCT_VIEW),
             color: context.customColors!.sinbad,
             svgName: SVGImagePaths.instance!.categoriesCardAlcSVG,
             categoriesTitle: TextConstants.alcoholicCocktails,

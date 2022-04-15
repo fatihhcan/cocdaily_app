@@ -4,5 +4,7 @@ class RouterConstant {
   static const REGISTER_VIEW = '/registerView';
   static const HOME_VIEW = '/homeView';
   static const SETTINGS_VIEW = '/settingsView';
+  static const ALCOHOLIC_PRODUCT_VIEW = '/alcoholicView';
+  static const NON_ALCOHOLIC_PRODUCT_VIEW = '/nonAlcoholicView';
   
 }

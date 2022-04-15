@@ -56,7 +56,8 @@ class SettingsView extends StatelessWidget {
             onTap: () {
               context.read<LoginCubit>().signOut();
               SharedPrefs.clearCache();
-              Navigator.pushNamed(context, RouterConstant.LOGIN_VIEW);
+             Navigator.pushNamedAndRemoveUntil(context, RouterConstant.LOGIN_VIEW,
+        ModalRoute.withName('/loginView'));
             },
             title: TextConstants.logout,
           ),
@@ -70,7 +71,7 @@ class SettingsView extends StatelessWidget {
       leading: IconButton(
           onPressed: ()=>Navigator.pushNamedAndRemoveUntil(context, RouterConstant.HOME_VIEW,
         ModalRoute.withName('/homeView')) ,
-          icon: Icon(
+          icon: const Icon(
             Icons.keyboard_arrow_left,
             color: Colors.white,
           )),

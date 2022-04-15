@@ -68,6 +68,7 @@ class CustomFavoritesCard extends StatelessWidget {
     return SizedBox(
                 height: 35.h,
                 child: FloatingActionButton(
+                   heroTag:'nextDetail',
                   backgroundColor: context.customColors!.doveGray,
                   onPressed: onPressedNextDetail,
                   elevation: 0,
@@ -83,6 +84,7 @@ class CustomFavoritesCard extends StatelessWidget {
     return SizedBox(
                 height: 35.h,
                 child: FloatingActionButton(
+                      heroTag:'favorite',
                   backgroundColor: context.customColors!.doveGray,
                   onPressed: onPressedFavorite,
                   elevation: 0,

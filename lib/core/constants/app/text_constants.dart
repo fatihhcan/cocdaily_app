@@ -27,5 +27,6 @@ class TextConstants {
   static const language = "Language";
   static const aboutApp = "About App";
   static const logout = "Logout";
+  static const loading = "Loading...";
 
 }

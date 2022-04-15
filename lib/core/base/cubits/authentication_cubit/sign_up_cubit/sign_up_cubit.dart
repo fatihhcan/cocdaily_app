@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -58,12 +59,16 @@ class SignUpCubit extends Cubit<SignUpState> {
     try {
       emit(state.copyWith(status: FormzStatus.submissionInProgress));
       await _auth.createUserWithEmailAndPassword(
-          email: state.email.value, password: state.password.value);
+          email: state.email.value, password: state.password.value).then((value) {
+      FirebaseFirestore.instance
+          .collection('UserData')
+          .doc(value.user!.uid)
+          .set({"email": value.user!.email, "name":nameController.text});
+      firebaseSetUserUid(value.user!.uid);
+    });
       emit(state.copyWith(status: FormzStatus.submissionSuccess));
       await SharedPrefs.setUserName(nameController.text);
       await SharedPrefs.setUserEmail(state.email.value);
-      print("REGISTER NAME ${nameController.text}");
-      print("REGISTER EMAIL ${state.email.value}");
   
     } on FirebaseAuthException catch (error) {
       emit(state.copyWith(
@@ -79,4 +84,15 @@ class SignUpCubit extends Cubit<SignUpState> {
           status: FormzStatus.submissionFailure));
     }
   }
+  firebaseSetUserUid(String uid) async {
+  var db = FirebaseFirestore.instance;
+  DocumentReference ref = db.collection('UserData').doc(uid);
+  ref.set(
+    {'uid': uid},
+    SetOptions(
+      merge: true,
+    ),
+  );
+}
+
 }

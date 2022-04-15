@@ -12,13 +12,12 @@ dependencies:
   animated_text_kit: ^4.2.1
   bloc: ^8.0.3
   build_runner: ^2.1.7
+  cloud_firestore: ^3.1.11
   cupertino_icons: ^1.0.2
   equatable: ^2.0.3
   firebase_auth: ^3.3.9
   firebase_auth_oauth: ^1.2.0
   firebase_core: ^1.13.1
-  flutter:
-    sdk: flutter
   flutter_bloc: ^8.0.1
   flutter_screenutil: ^5.3.1
   flutter_svg: ^1.0.3
@@ -29,7 +28,8 @@ dependencies:
   json_serializable: ^6.1.4
   lottie: ^1.2.2
   shared_preferences: ^2.0.13
-  vexana: ^2.7.0
+  flutter:
+    sdk: flutter
 
 dev_dependencies:
   flutter_lints: ^1.0.0

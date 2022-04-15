@@ -6,7 +6,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../../core/base/cubits/authentication_cubit/sign_up_cubit/sign_up_cubit.dart';
 import '../../../../../core/constants/app/text_constants.dart';
-import '../../../../core/utility/shared/shared_prefs.dart';
 
 class NameInputField extends StatelessWidget {
   const NameInputField({Key? key, required this.state, this.controller})
