@@ -75,13 +75,13 @@ class SignUpView extends StatelessWidget {
         ),
         registerButtonBuild(context),
         const Spacer(),
-        backgroundBottomWidgetBuild()
+        backgroundBottomWidgetBuild(context)
       ],
     );
   }
 
-  AuthBackGroundBottom backgroundBottomWidgetBuild() => AuthBackGroundBottom(
-        onPressed: () {},
+  AuthBackGroundBottom backgroundBottomWidgetBuild(BuildContext context) => AuthBackGroundBottom(
+        onPressed: () => Navigator.pushNamed(context, RouterConstant.LOGIN_VIEW),
         title: TextConstants.alreadyHaveAnAccount,
         titleButton: TextConstants.loginButton,
       );
