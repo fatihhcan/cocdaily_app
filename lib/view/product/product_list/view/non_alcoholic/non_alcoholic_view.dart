@@ -5,18 +5,29 @@ import 'package:cocdaily_app/view/product/product_list/components/product_list.d
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../../core/base/cubits/favorite_cubit/favorite_cubit.dart';
+
 class NonAlcoholicView extends StatelessWidget {
   const NonAlcoholicView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return ProductList(
-      stream: context
-          .read<ProductCubit>()
-          .collectionReferenceNonAlcoholicCocktails
-          .snapshots(),
-      cardBackgroundName: SVGImagePaths.instance!.nonAlcoholicCardSVG,
-      appBarTitle: TextConstants.appBarNonAlcoholicCocktails,
-    );
+    return MultiBlocProvider(
+        providers: [
+          BlocProvider<ProductCubit>(
+              create: (BuildContext context) =>
+                  ProductCubit()..fetchProductsAlcoholic()),
+        ],
+        child: BlocBuilder<FavoriteCubit, FavoriteCubitState>(
+            builder: (context, state) {
+          return ProductList(
+            stream: context
+                .read<ProductCubit>()
+                .collectionReferenceNonAlcoholicCocktails
+                .snapshots(),
+            cardBackgroundName: SVGImagePaths.instance!.nonAlcoholicCardSVG,
+            appBarTitle: TextConstants.appBarNonAlcoholicCocktails,
+          );
+        }));
   }
 }

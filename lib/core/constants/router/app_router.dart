@@ -28,7 +28,7 @@ class AppRouter {
         );
       case RouterConstant.ALCOHOLIC_PRODUCT_VIEW:
         return MaterialPageRoute(
-          builder: (_) => const AlcoholicView(),
+          builder: (_) =>  const AlcoholicView(),
         );
             case RouterConstant.NON_ALCOHOLIC_PRODUCT_VIEW:
         return MaterialPageRoute(

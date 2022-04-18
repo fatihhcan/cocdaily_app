@@ -1,5 +1,7 @@
 import 'package:cocdaily_app/core/base/cubits/authentication_cubit/login_cubit/login_cubit.dart';
 import 'package:cocdaily_app/core/base/cubits/authentication_cubit/sign_up_cubit/sign_up_cubit.dart';
+import 'package:cocdaily_app/core/base/cubits/favorite_cubit/favorite_cubit.dart';
+import 'package:cocdaily_app/core/base/cubits/home_cubit/home_cubit.dart';
 import 'package:cocdaily_app/core/base/cubits/product_cubit/product_cubit.dart';
 import 'package:cocdaily_app/core/constants/init/theme/light/app_theme_light.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -32,6 +34,10 @@ class MyApp extends StatelessWidget {
         create: (_) => SignUpCubit()),
         BlocProvider(
         create: (_) => ProductCubit()),
+        BlocProvider(
+        create: (_) => FavoriteCubit()),
+        BlocProvider(
+        create: (_) => HomeCubit()),
       ],
       child: ScreenUtilInit(
         designSize: const Size(428, 926),

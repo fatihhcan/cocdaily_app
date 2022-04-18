@@ -1,6 +1,6 @@
-/* part of 'favorite_cubit.dart';
+part of 'favorite_cubit.dart';
 
-@immutable
+
 abstract class FavoriteCubitState {}
 
 class FavoriteCubitInitial extends FavoriteCubitState {}
@@ -8,4 +8,4 @@ class FavoriteCubitInitial extends FavoriteCubitState {}
 class FavoriteCubitLoading extends FavoriteCubitState {}
 class FavoriteCubitCompleted extends FavoriteCubitState {}
 
- */
+ 

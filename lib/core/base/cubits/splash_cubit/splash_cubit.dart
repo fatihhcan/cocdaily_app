@@ -18,7 +18,8 @@ class SplashCubit extends Cubit<SplashCubitState> {
   navigatorToScreen(BuildContext context) {
     Future.delayed(const Duration(seconds: 5), () {
       if (SharedPrefs.getIsLogined) {
-        Navigator.pushNamed(context, RouterConstant.HOME_VIEW);
+        Navigator.of(context).pushNamedAndRemoveUntil(
+            RouterConstant.HOME_VIEW, (Route<dynamic> route) => false);
       } else {
         Navigator.pushNamed(context, RouterConstant.LOGIN_VIEW);
       }

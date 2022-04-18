@@ -1,9 +1,14 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:cocdaily_app/core/base/cubits/home_cubit/home_cubit.dart';
+import 'package:cocdaily_app/core/base/cubits/product_cubit/product_cubit.dart';
+import 'package:cocdaily_app/core/components/widgets/progress_indicator/custom_progress_indicator.dart';
 import 'package:cocdaily_app/core/constants/app/app_router_constants.dart';
 import 'package:cocdaily_app/core/constants/app/text_constants.dart';
 import 'package:cocdaily_app/core/extensions/context_extension.dart';
 import 'package:cocdaily_app/view/home/components/favorites_card.dart';
 import 'package:cocdaily_app/view/home/components/welcome_card.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../core/constants/image/image_constants.dart';
@@ -19,7 +24,27 @@ class HomeView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: buildAppBar(context),
-      body: buildBody(context),
+      body: MultiBlocProvider(
+          providers: [
+            BlocProvider<HomeCubit>(
+                create: (BuildContext context) => HomeCubit()..init(context)),
+                          BlocProvider<ProductCubit>(
+              create: (BuildContext context) =>
+                  ProductCubit()..fetchProductsFavorites()),
+            /*     BlocProvider<FavoriteCubit>(
+          create: (BuildContext context) => FavoriteCubit()..init(context)), */
+          ],
+          child: BlocBuilder<HomeCubit, HomeCubitState>(
+            builder: (context, state) {
+              if (state is HomeCubitLoading) {
+                return const CustomProgressIndicator();
+              } else if (state is HomeCubitCompleted) {
+                return buildBody(context);
+              } else {
+                return const CustomProgressIndicator();
+              }
+            },
+          )),
     );
   }
 
@@ -46,28 +71,46 @@ class HomeView extends StatelessWidget {
           SizedBox(
             height: 25.h,
           ),
-          buildFavoritesListView(),
+          buildFavoritesStreamBuilder(context),
         ],
       ),
     );
   }
 
-  SizedBox buildFavoritesListView() {
+  StreamBuilder<QuerySnapshot<Object?>> buildFavoritesStreamBuilder(BuildContext context) {
+    return StreamBuilder(
+          stream: context
+              .read<ProductCubit>()
+              .collectionReferenceFavoritesCocktails
+              .snapshots(),
+          builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
+              if (snapshot.hasError) {
+            return const CustomProgressIndicator();
+          }
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return const CustomProgressIndicator();
+          }
+          if (snapshot.hasData) {
+              return buildFavoritesListView(context,snapshot);
+          }
+          return const CustomProgressIndicator();
+         
+          }
+        );
+  }
+
+  SizedBox buildFavoritesListView(BuildContext context, AsyncSnapshot<QuerySnapshot<Object?>> snapshot) {
     return SizedBox(
       height: 200.h,
       child: ListView(
+       
         scrollDirection: Axis.horizontal,
-        children: [
-          const CustomFavoritesCard(
+        children: snapshot.data!.docs.map((e) =>CustomFavoritesCard(
+            name: e["name"],
+            urlPhoto: e["urlPhoto"],
             iconFavorite: Icons.favorite,
-          ),
-          const CustomFavoritesCard(
-            iconFavorite: Icons.favorite,
-          ),
-          const CustomFavoritesCard(
-            iconFavorite: Icons.favorite,
-          ),
-        ],
+          ) ).toList(),
+     
       ),
     );
   }
@@ -85,7 +128,8 @@ class HomeView extends StatelessWidget {
         scrollDirection: Axis.horizontal,
         children: [
           CustomCategoriesCard(
-            onTap: () => Navigator.pushNamed(context, RouterConstant.NON_ALCOHOLIC_PRODUCT_VIEW),
+            onTap: () => Navigator.pushNamed(
+                context, RouterConstant.NON_ALCOHOLIC_PRODUCT_VIEW),
             color: context.customColors!.athsSpecial,
             svgName: SVGImagePaths.instance!.categoriesCardNonSVG,
             categoriesTitle: TextConstants.nonAlcoholicCocktails,
@@ -95,7 +139,8 @@ class HomeView extends StatelessWidget {
             width: 15.w,
           ),
           CustomCategoriesCard(
-            onTap: ()=>Navigator.pushNamed(context, RouterConstant.ALCOHOLIC_PRODUCT_VIEW),
+            onTap: () => Navigator.pushNamed(
+                context, RouterConstant.ALCOHOLIC_PRODUCT_VIEW),
             color: context.customColors!.sinbad,
             svgName: SVGImagePaths.instance!.categoriesCardAlcSVG,
             categoriesTitle: TextConstants.alcoholicCocktails,
@@ -138,7 +183,7 @@ class HomeView extends StatelessWidget {
 
   AppBar buildAppBar(BuildContext context) {
     return AppBar(
-      automaticallyImplyLeading:false,
+      automaticallyImplyLeading: false,
       backgroundColor: context.customColors!.doveGray,
       title: Image.asset(
         ImageConstants.instance.projectIcon,
@@ -151,7 +196,8 @@ class HomeView extends StatelessWidget {
   }
 
   IconButton settingsButton(BuildContext context) => IconButton(
-        onPressed: ()=>Navigator.pushNamed(context, RouterConstant.SETTINGS_VIEW),
+        onPressed: () =>
+            Navigator.pushNamed(context, RouterConstant.SETTINGS_VIEW),
         icon: const Icon(Icons.settings),
         color: context.customColors!.wildSand,
       );

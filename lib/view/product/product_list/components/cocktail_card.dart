@@ -10,11 +10,13 @@ class CocktailCard extends StatelessWidget {
   final String name;
   final String cardBackgroundName;
   final void Function()? onPressedFavorite;
+  final IconData favoriteIcon;
   const CocktailCard(
       {Key? key,
       required this.urlPhoto,
       required this.name,
-      required this.cardBackgroundName, this.onPressedFavorite})
+      required this.cardBackgroundName,
+      this.onPressedFavorite, required this.favoriteIcon})
       : super(key: key);
 
   @override

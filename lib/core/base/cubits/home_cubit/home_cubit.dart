@@ -4,25 +4,26 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 part 'home_state.dart';
 
-
 class HomeCubit extends Cubit<HomeCubitState> {
-  final CollectionReference collectionReferenceAlcoholicCocktails = FirebaseFirestore.instance
-        .collection('UserData')
-        .doc('Alcoholic')
-        .collection('AlcoholicCocktails');
-
-
   HomeCubit() : super(HomeCubitInitial());
+  List products = [];
+  var _firestoreInstance = FirebaseFirestore.instance;
 
-  productInit(BuildContext context) async {
-    try {
-      emit(HomeCubitLoading());
-     
-    } catch (e) {}
+  init(BuildContext context) async {
+    emit(HomeCubitLoading());
+    await fetchProducts();
+    emit(HomeCubitCompleted());
   }
 
-
-  alcoholicProduct(){
-
+  fetchProducts() async {
+    QuerySnapshot qn = await _firestoreInstance.collection("Cocktails").doc("Alcoholic").collection("AlcoholicCocktails").get();
+    for (int i = 0; i < qn.docs.length; i++) {
+      products.add({
+        "name": qn.docs[i]["name"],
+        "urlPhoto": qn.docs[i]["urlPhoto"],
+        "recipe": qn.docs[i]["recipe"],
+      });
+    }
+    return qn.docs;
   }
 }

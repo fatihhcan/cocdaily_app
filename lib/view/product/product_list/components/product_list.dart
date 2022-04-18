@@ -4,14 +4,18 @@ import 'package:cocdaily_app/core/constants/app/app_router_constants.dart';
 import 'package:cocdaily_app/core/extensions/context_extension.dart';
 import 'package:cocdaily_app/view/product/product_list/components/cocktail_card.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
+import '../../../../core/base/cubits/favorite_cubit/favorite_cubit.dart';
 class ProductList extends StatelessWidget {
   final String? cardBackgroundName;
   final String? appBarTitle;
   final Stream<QuerySnapshot<Object?>>? stream;
+  final void Function()? onPressedFavorite;
+  final IconData? iconFavorite;
+
   const ProductList(
-      {Key? key, this.cardBackgroundName, this.stream, this.appBarTitle})
+      {Key? key, this.cardBackgroundName, this.stream, this.appBarTitle, this.onPressedFavorite, this.iconFavorite})
       : super(key: key);
 
   @override
@@ -37,26 +41,32 @@ class ProductList extends StatelessWidget {
               return const CustomProgressIndicator();
             }
             if (snapshot.hasData) {
-            return  buildGridView(snapshot);
+              return buildGridView(context, snapshot);
             }
             return const CustomProgressIndicator();
           }),
     ));
   }
 
-  GridView buildGridView(AsyncSnapshot<QuerySnapshot<Object?>> snapshot) {
+  GridView buildGridView(BuildContext context,AsyncSnapshot<QuerySnapshot<Object?>> snapshot) {
     return GridView(
-                children: snapshot.data!.docs
-                    .map((e) => CocktailCard(
-                        onPressedFavorite: () {},
-                        urlPhoto: e['urlPhoto'],
-                        name: e['name'],
-                        cardBackgroundName: cardBackgroundName!))
-                    .toList(),
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2,
-                ),
-              );
+      children: snapshot.data!.docs
+          .map((e) => CocktailCard(
+              favoriteIcon: Icons.favorite,
+              onPressedFavorite: (() async =>
+                  await context.read<FavoriteCubit>().addFavorite(context,
+                  e["name"],
+                  e["urlPhoto"],
+                  e["recipe"]
+                  )),
+              urlPhoto: e['urlPhoto'],
+              name: e['name'],
+              cardBackgroundName: cardBackgroundName!))
+          .toList(),
+      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: 2,
+      ),
+    );
   }
 
   AppBar buildAppBar(BuildContext context) {
@@ -67,12 +77,12 @@ class ProductList extends StatelessWidget {
         style: context.textTheme.headline4!.copyWith(color: Colors.white),
       ),
       leading: IconButton(
-          onPressed: () => Navigator.pushNamed(context, RouterConstant.HOME_VIEW),
+          onPressed: () =>
+              Navigator.pushNamed(context, RouterConstant.HOME_VIEW),
           icon: const Icon(
             Icons.keyboard_arrow_left,
             color: Colors.white,
           )),
-      //actions: [settingsButton(context)],
     );
   }
 }

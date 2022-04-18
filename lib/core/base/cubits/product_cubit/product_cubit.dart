@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -20,15 +21,66 @@ class ProductCubit extends Cubit<ProductCubitState> {
           .collection('Cocktails')
           .doc('Alcoholic')
           .collection('AlcoholicCocktails');
+  late CollectionReference collectionReferenceFavoritesCocktails;
+  List productsFavorites = [];
+  List productsAlcoholic = [];
+  List productsNonAlcoholic = [];
+  var _firestoreInstance = FirebaseFirestore.instance;
   ProductCubit() : super(ProductCubitInitial());
 
   productInit(BuildContext context) async {
-    try {
-      emit(ProductCubitLoading());
-    } catch (e) {}
+    emit(ProductCubitLoading());
+    await fetchProductsAlcoholic();
+    await fetchProductsNonAlcoholic();
+    emit(ProductCubitCompleted());
   }
 
-  alcoholicProduct() {}
+  fetchProductsAlcoholic() async {
+    QuerySnapshot qn = await collectionReferenceAlcoholicCocktails.get();
 
+    for (int i = 0; i < qn.docs.length; i++) {
+      productsAlcoholic.add({
+        "name": qn.docs[i]["name"],
+        "urlPhoto": qn.docs[i]["urlPhoto"],
+        "recipe": qn.docs[i]["recipe"],
+      });
+      productsAlcoholic[i];
+    }
+    return qn.docs;
+  }
 
+  fetchProductsNonAlcoholic() async {
+    QuerySnapshot qn = await collectionReferenceNonAlcoholicCocktails.get();
+
+    for (int i = 0; i < qn.docs.length; i++) {
+      productsNonAlcoholic.add({
+        "name": qn.docs[i]["name"],
+        "urlPhoto": qn.docs[i]["urlPhoto"],
+        "recipe": qn.docs[i]["recipe"],
+      });
+      productsNonAlcoholic[i];
+    }
+    return qn.docs;
+  }
+
+  fetchProductsFavorites() async {
+    final FirebaseAuth _auth = FirebaseAuth.instance;
+    var currentUser = _auth.currentUser;
+    collectionReferenceFavoritesCocktails =
+        FirebaseFirestore.instance
+            .collection('UserFavoritesCocktails')
+            .doc(currentUser!.email)
+            .collection("Cocktails");
+    QuerySnapshot qn = await collectionReferenceFavoritesCocktails.get();
+
+    for (int i = 0; i < qn.docs.length; i++) {
+      productsFavorites.add({
+        "name": qn.docs[i]["name"],
+        "urlPhoto": qn.docs[i]["urlPhoto"],
+        "recipe": qn.docs[i]["recipe"],
+      });
+      productsFavorites[i];
+    }
+    return qn.docs;
+  }
 }
