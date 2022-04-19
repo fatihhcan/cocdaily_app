@@ -150,6 +150,8 @@ class HomeView extends StatelessWidget {
             width: 15.w,
           ),
           CustomCategoriesCard(
+                onTap: () => Navigator.pushNamed(
+                context, RouterConstant.CLASSIC_PRODUCT_VIEW),
             color: context.customColors!.hitPink,
             svgName: SVGImagePaths.instance!.categoriesCardClsSVG,
             categoriesTitle: TextConstants.clsoholicCocktails,
@@ -159,6 +161,8 @@ class HomeView extends StatelessWidget {
             width: 15.w,
           ),
           CustomCategoriesCard(
+              onTap: () => Navigator.pushNamed(
+                context, RouterConstant.FAVORITES_PRODUCT_VIEW),
             color: context.customColors!.pippin,
             svgName: SVGImagePaths.instance!.categoriesCardFavoritesSVG,
             categoriesTitle: TextConstants.favoritesoholicCocktails,

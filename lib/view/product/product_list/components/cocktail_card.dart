@@ -25,7 +25,11 @@ class CocktailCard extends StatelessWidget {
       children: [
         buildCocktailsCard(),
         buildButtons(context),
-        buildCocktailsImage(urlPhoto),
+        Positioned(top:10.h,
+        bottom: 50.h,
+        left:0.w,right: 90.w,
+
+          child: buildCocktailsImage(urlPhoto)),
         buildCocktailsName(context, name)
       ],
     );
@@ -52,7 +56,9 @@ class CocktailCard extends StatelessWidget {
   Padding buildCocktailsImage(String urlPhoto) {
     return Padding(
       padding: EdgeInsets.only(top: 50.h, left: 70.w),
-      child: Image.network(urlPhoto),
+      child: Image.network(urlPhoto, fit: 
+      BoxFit.contain,height: 180.0.h,
+            width: 180.0.w,),
     );
   }
 

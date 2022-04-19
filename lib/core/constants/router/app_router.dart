@@ -3,6 +3,8 @@ import 'package:cocdaily_app/view/authentication/register/view/sign_up_view.dart
 import 'package:cocdaily_app/view/home/view/home_view.dart';
 import 'package:cocdaily_app/view/launch/view/splash_view.dart';
 import 'package:cocdaily_app/view/product/product_list/view/alcoholic/alcoholic_view.dart';
+import 'package:cocdaily_app/view/product/product_list/view/classic/classic_view.dart';
+import 'package:cocdaily_app/view/product/product_list/view/favorites/favorites_view.dart';
 import 'package:cocdaily_app/view/settings/view/settings_view.dart';
 import 'package:flutter/material.dart';
 import '../../../view/product/product_list/view/non_alcoholic/non_alcoholic_view.dart';
@@ -30,11 +32,18 @@ class AppRouter {
         return MaterialPageRoute(
           builder: (_) =>  const AlcoholicView(),
         );
-            case RouterConstant.NON_ALCOHOLIC_PRODUCT_VIEW:
+      case RouterConstant.NON_ALCOHOLIC_PRODUCT_VIEW:
         return MaterialPageRoute(
           builder: (_) => const NonAlcoholicView(),
         );
-
+    case RouterConstant.CLASSIC_PRODUCT_VIEW:
+        return MaterialPageRoute(
+          builder: (_) => const ClassicView(),
+        );
+    case RouterConstant.FAVORITES_PRODUCT_VIEW:
+        return MaterialPageRoute(
+          builder: (_) => const FavoritesView(),
+        );
       default:
         return null;
     }

@@ -19,12 +19,14 @@ class ProductCubit extends Cubit<ProductCubitState> {
   final CollectionReference collectionReferenceClassicAlcoholicCocktails =
       FirebaseFirestore.instance
           .collection('Cocktails')
-          .doc('Alcoholic')
-          .collection('AlcoholicCocktails');
+          .doc('Classic')
+          .collection('ClassicCocktails');
   late CollectionReference collectionReferenceFavoritesCocktails;
   List productsFavorites = [];
   List productsAlcoholic = [];
   List productsNonAlcoholic = [];
+  List productsClassic = [];
+
   var _firestoreInstance = FirebaseFirestore.instance;
   ProductCubit() : super(ProductCubitInitial());
 
@@ -32,6 +34,7 @@ class ProductCubit extends Cubit<ProductCubitState> {
     emit(ProductCubitLoading());
     await fetchProductsAlcoholic();
     await fetchProductsNonAlcoholic();
+    await fetchProductsClassic();
     emit(ProductCubitCompleted());
   }
 
@@ -80,6 +83,20 @@ class ProductCubit extends Cubit<ProductCubitState> {
         "recipe": qn.docs[i]["recipe"],
       });
       productsFavorites[i];
+    }
+    return qn.docs;
+  }
+  
+  fetchProductsClassic() async {
+    QuerySnapshot qn = await collectionReferenceClassicAlcoholicCocktails.get();
+
+    for (int i = 0; i < qn.docs.length; i++) {
+      productsClassic.add({
+        "name": qn.docs[i]["name"],
+        "urlPhoto": qn.docs[i]["urlPhoto"],
+        "recipe": qn.docs[i]["recipe"],
+      });
+      productsClassic[i];
     }
     return qn.docs;
   }
