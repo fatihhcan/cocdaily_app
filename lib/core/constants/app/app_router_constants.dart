@@ -8,5 +8,6 @@ class RouterConstant {
   static const NON_ALCOHOLIC_PRODUCT_VIEW = '/nonAlcoholicView';
   static const CLASSIC_PRODUCT_VIEW = '/classicView';
   static const FAVORITES_PRODUCT_VIEW = '/favoritesView';
+  static const PRODUCT_DETAIL_VIEW = '/productDetailView';
   
 }

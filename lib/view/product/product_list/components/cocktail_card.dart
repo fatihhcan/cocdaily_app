@@ -3,35 +3,38 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
-import '../../../../core/constants/image/image_path.dart';
-
 class CocktailCard extends StatelessWidget {
   final String urlPhoto;
   final String name;
   final String cardBackgroundName;
   final void Function()? onPressedFavorite;
+  final void Function()? onPressedNextDetail;
+  final void Function()? onPressedNextDetailDetector;
   final IconData favoriteIcon;
   const CocktailCard(
       {Key? key,
       required this.urlPhoto,
       required this.name,
       required this.cardBackgroundName,
-      this.onPressedFavorite, required this.favoriteIcon})
+      this.onPressedFavorite, this.onPressedNextDetail, required this.favoriteIcon, this.onPressedNextDetailDetector})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        buildCocktailsCard(),
-        buildButtons(context),
-        Positioned(top:10.h,
-        bottom: 50.h,
-        left:0.w,right: 90.w,
-
-          child: buildCocktailsImage(urlPhoto)),
-        buildCocktailsName(context, name)
-      ],
+    return GestureDetector(
+      onTap: onPressedNextDetailDetector,
+      child: Stack(
+        children: [
+          buildCocktailsCard(),
+          buildButtons(context),
+          Positioned(top:10.h,
+          bottom: 50.h,
+          left:0.w,right: 90.w,
+    
+            child: buildCocktailsImage(urlPhoto)),
+          buildCocktailsName(context, name)
+        ],
+      ),
     );
   }
 
@@ -86,7 +89,7 @@ class CocktailCard extends StatelessWidget {
         child: FloatingActionButton(
           heroTag: 'nextDetail',
           backgroundColor: context.customColors!.doveGray,
-          onPressed: () {},
+          onPressed: onPressedNextDetail,
           elevation: 0,
           child: Icon(
             Icons.keyboard_arrow_right,
@@ -105,7 +108,7 @@ class CocktailCard extends StatelessWidget {
           onPressed: onPressedFavorite,
           elevation: 0,
           child: Icon(
-            Icons.favorite,
+           favoriteIcon,
             size: 16.h,
             color: Colors.white,
           ),

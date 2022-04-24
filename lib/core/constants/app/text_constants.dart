@@ -28,5 +28,9 @@ class TextConstants {
   static const aboutApp = "About App";
   static const logout = "Logout";
   static const loading = "Loading...";
+  static const alreadyFavoritesAdded = "Already favorites added.";
+  static const favoritesAdded = "Added to favorites.";
+  static const favoritesRemovedFromFavorites = "Removed from favorites.";
+  static const undo = "Undo";
 
 }

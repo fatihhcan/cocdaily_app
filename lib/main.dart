@@ -3,6 +3,7 @@ import 'package:cocdaily_app/core/base/cubits/authentication_cubit/sign_up_cubit
 import 'package:cocdaily_app/core/base/cubits/favorite_cubit/favorite_cubit.dart';
 import 'package:cocdaily_app/core/base/cubits/home_cubit/home_cubit.dart';
 import 'package:cocdaily_app/core/base/cubits/product_cubit/product_cubit.dart';
+import 'package:cocdaily_app/core/base/cubits/share_social_media_cubit/share_social_media_cubit.dart';
 import 'package:cocdaily_app/core/constants/init/theme/light/app_theme_light.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -38,6 +39,8 @@ class MyApp extends StatelessWidget {
         create: (_) => FavoriteCubit()),
         BlocProvider(
         create: (_) => HomeCubit()),
+          BlocProvider(
+        create: (_) => ShareSocialMediaCubit()),
       ],
       child: ScreenUtilInit(
         designSize: const Size(428, 926),
@@ -45,8 +48,8 @@ class MyApp extends StatelessWidget {
             debugShowCheckedModeBanner: false,
             theme: AppThemeLight.instance.theme,
             title: 'Cocdaily',
-            onGenerateRoute: _appRouter.onGenerateRoute,
-
+          onGenerateRoute: _appRouter.onGenerateRoute,
+//ome: ProductDetailsRecipeView(),
         /*     home: BlocProvider(
               lazy:false,
               create: (_) => LoginCubit(),

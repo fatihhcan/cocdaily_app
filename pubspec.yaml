@@ -18,6 +18,8 @@ dependencies:
   firebase_auth: ^3.3.9
   firebase_auth_oauth: ^1.2.0
   firebase_core: ^1.13.1
+  flutter:
+    sdk: flutter
   flutter_bloc: ^8.0.1
   flutter_screenutil: ^5.3.1
   flutter_svg: ^1.0.3
@@ -27,9 +29,8 @@ dependencies:
   json_annotation: ^4.4.0
   json_serializable: ^6.1.4
   lottie: ^1.2.2
+  share: ^2.0.4
   shared_preferences: ^2.0.13
-  flutter:
-    sdk: flutter
 
 dev_dependencies:
   flutter_lints: ^1.0.0

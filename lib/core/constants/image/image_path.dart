@@ -24,4 +24,7 @@ class SVGImagePaths {
   final nonAlcoholicCardSVG = 'non_alcoholic_card'.toSVG;
   final splashJSON = 'assets/json/splash.json';   //JSON - SPLASH 
   final loadingJSON = 'assets/json/loading.json';   //JSON - LOADING 
+  final favoriteRecipeSVG = 'favorite_recipe'.toSVG;
+  final shareRecipeSVG = 'share_recipe'.toSVG;
+
 }

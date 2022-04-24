@@ -2,12 +2,14 @@ import 'package:cocdaily_app/view/authentication/login/view/login_view.dart';
 import 'package:cocdaily_app/view/authentication/register/view/sign_up_view.dart';
 import 'package:cocdaily_app/view/home/view/home_view.dart';
 import 'package:cocdaily_app/view/launch/view/splash_view.dart';
+import 'package:cocdaily_app/view/product/product_details_recipe/view/product_details_recipe_view.dart';
 import 'package:cocdaily_app/view/product/product_list/view/alcoholic/alcoholic_view.dart';
 import 'package:cocdaily_app/view/product/product_list/view/classic/classic_view.dart';
 import 'package:cocdaily_app/view/product/product_list/view/favorites/favorites_view.dart';
 import 'package:cocdaily_app/view/settings/view/settings_view.dart';
 import 'package:flutter/material.dart';
 import '../../../view/product/product_list/view/non_alcoholic/non_alcoholic_view.dart';
+import '../../base/screen_arguments/product_details_recipe_argument.dart';
 import '../app/app_router_constants.dart';
 class AppRouter {
   Route? onGenerateRoute(RouteSettings routeSettings) {
@@ -43,6 +45,21 @@ class AppRouter {
     case RouterConstant.FAVORITES_PRODUCT_VIEW:
         return MaterialPageRoute(
           builder: (_) => const FavoritesView(),
+        );
+    case RouterConstant.PRODUCT_DETAIL_VIEW:
+        final ScreenArgumentProductDetailsRecipe args =
+            routeSettings.arguments as ScreenArgumentProductDetailsRecipe;
+
+        return MaterialPageRoute(
+          builder: (_) => ProductDetailsRecipeView(
+            name: args.name,
+            recipe: args.recipe,
+            urlPhoto: args.urlPhoto,
+            cardBackgroundColor: args.cardBackgroundColor,
+            e: args.e,
+            snapshot: args.snapshot,
+            
+          ),
         );
       default:
         return null;

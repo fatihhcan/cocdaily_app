@@ -3,19 +3,32 @@ import 'package:cocdaily_app/core/components/widgets/progress_indicator/custom_p
 import 'package:cocdaily_app/core/constants/app/app_router_constants.dart';
 import 'package:cocdaily_app/core/extensions/context_extension.dart';
 import 'package:cocdaily_app/view/product/product_list/components/cocktail_card.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/base/cubits/favorite_cubit/favorite_cubit.dart';
+
 class ProductList extends StatelessWidget {
   final String? cardBackgroundName;
+  final Color? cardBackgroundColor;
   final String? appBarTitle;
   final Stream<QuerySnapshot<Object?>>? stream;
   final void Function()? onPressedFavorite;
+  final void Function()? onPressedNextDetail;
   final IconData? iconFavorite;
+  final bool isFavoritesView;
 
   const ProductList(
-      {Key? key, this.cardBackgroundName, this.stream, this.appBarTitle, this.onPressedFavorite, this.iconFavorite})
+      {Key? key,
+      this.cardBackgroundName,
+      this.cardBackgroundColor,
+      this.stream,
+      this.appBarTitle,
+      this.onPressedFavorite,
+      this.iconFavorite,
+      this.onPressedNextDetail,
+      this.isFavoritesView = false})
       : super(key: key);
 
   @override
@@ -48,25 +61,45 @@ class ProductList extends StatelessWidget {
     ));
   }
 
-  GridView buildGridView(BuildContext context,AsyncSnapshot<QuerySnapshot<Object?>> snapshot) {
+  GridView buildGridView(
+      BuildContext context, AsyncSnapshot<QuerySnapshot<Object?>> snapshot) {
     return GridView(
       children: snapshot.data!.docs
-          .map((e) => CocktailCard(
-              favoriteIcon: Icons.favorite,
-              onPressedFavorite: (() async =>
-                  await context.read<FavoriteCubit>().addFavorite(context,
-                  e["name"],
-                  e["urlPhoto"],
-                  e["recipe"]
-                  )),
-              urlPhoto: e['urlPhoto'],
-              name: e['name'],
-              cardBackgroundName: cardBackgroundName!))
+          .map((e) => StreamBuilder(
+              stream: FirebaseFirestore.instance
+                  .collection("UserFavoritesCocktails")
+                  .doc(FirebaseAuth.instance.currentUser!.email)
+                  .collection("Cocktails")
+                  .where("name", isEqualTo: e['name'])
+                  .snapshots(),
+              builder: (BuildContext context, AsyncSnapshot snapshot) {
+                return buildCocktailCard(context, e, snapshot);
+              }))
           .toList(),
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,
       ),
     );
+  }
+
+  CocktailCard buildCocktailCard(BuildContext context, QueryDocumentSnapshot<Object?> e, AsyncSnapshot<dynamic> snapshot) {
+    return CocktailCard(
+                  onPressedNextDetailDetector: () => context
+                      .read<FavoriteCubit>()
+                      .nextDetailViewNavigate(context, e["name"],
+                          e["urlPhoto"], e["recipe"], cardBackgroundColor!,snapshot, e, ),
+                  onPressedNextDetail: () => context
+                      .read<FavoriteCubit>()
+                      .nextDetailViewNavigate(context, e["name"],
+                          e["urlPhoto"], e["recipe"], cardBackgroundColor!,snapshot, e,),
+                  favoriteIcon: iconFavorite!,
+                  onPressedFavorite: (() {
+                    context.read<FavoriteCubit>().productDetailFavorites(
+                        context, isFavoritesView, snapshot, e);
+                  }),
+                  urlPhoto: e['urlPhoto'],
+                  name: e['name'],
+                  cardBackgroundName: cardBackgroundName!);
   }
 
   AppBar buildAppBar(BuildContext context) {

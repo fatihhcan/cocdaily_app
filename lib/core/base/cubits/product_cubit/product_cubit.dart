@@ -26,7 +26,7 @@ class ProductCubit extends Cubit<ProductCubitState> {
   List productsAlcoholic = [];
   List productsNonAlcoholic = [];
   List productsClassic = [];
-
+  List _products = [];
   var _firestoreInstance = FirebaseFirestore.instance;
   ProductCubit() : super(ProductCubitInitial());
 
@@ -69,11 +69,10 @@ class ProductCubit extends Cubit<ProductCubitState> {
   fetchProductsFavorites() async {
     final FirebaseAuth _auth = FirebaseAuth.instance;
     var currentUser = _auth.currentUser;
-    collectionReferenceFavoritesCocktails =
-        FirebaseFirestore.instance
-            .collection('UserFavoritesCocktails')
-            .doc(currentUser!.email)
-            .collection("Cocktails");
+    collectionReferenceFavoritesCocktails = FirebaseFirestore.instance
+        .collection('UserFavoritesCocktails')
+        .doc(currentUser!.email)
+        .collection("Cocktails");
     QuerySnapshot qn = await collectionReferenceFavoritesCocktails.get();
 
     for (int i = 0; i < qn.docs.length; i++) {
@@ -86,7 +85,7 @@ class ProductCubit extends Cubit<ProductCubitState> {
     }
     return qn.docs;
   }
-  
+
   fetchProductsClassic() async {
     QuerySnapshot qn = await collectionReferenceClassicAlcoholicCocktails.get();
 
