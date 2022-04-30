@@ -79,11 +79,9 @@
 
 **webview_flutter:** A Flutter plugin that provides a WebView widget on Android and iOS.
 
-A few resources to get you started if this is your first Flutter project:
+## Google Play Store
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+![playstore](https://user-images.githubusercontent.com/45641833/166124105-91d09830-624a-41af-b8f4-49bddbfec583.svg)
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- [Google Play Store](https://play.google.com/)
+
