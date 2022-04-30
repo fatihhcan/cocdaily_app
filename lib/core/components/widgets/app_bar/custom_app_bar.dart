@@ -1,10 +1,8 @@
 import 'package:cocdaily_app/core/extensions/context_extension.dart';
+import 'package:cocdaily_app/core/extensions/string_extension.dart';
+import 'package:cocdaily_app/utils/locale_keys.g.dart';
 import 'package:flutter/material.dart';
-
 import '../../../constants/app/app_router_constants.dart';
-import '../../../constants/app/text_constants.dart';
-
-
 class CustomAppBar extends StatelessWidget {
   const CustomAppBar({Key? key}) : super(key: key);
 
@@ -13,7 +11,7 @@ class CustomAppBar extends StatelessWidget {
     return AppBar(
       backgroundColor: context.customColors!.doveGray,
       title: Text(
-        TextConstants.appBarAlcoholicCocktails,
+       LocaleKeys.app_bar_alcoholic_cocktails.locale,
         style: context.textTheme.headline4!.copyWith(color: Colors.white),
       ),
       leading: IconButton(
@@ -24,7 +22,6 @@ class CustomAppBar extends StatelessWidget {
             Icons.keyboard_arrow_left,
             color: Colors.white,
           )),
-      //actions: [settingsButton(context)],
     );
   }
 }

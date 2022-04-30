@@ -6,7 +6,9 @@ import 'package:cocdaily_app/view/product/product_details_recipe/view/product_de
 import 'package:cocdaily_app/view/product/product_list/view/alcoholic/alcoholic_view.dart';
 import 'package:cocdaily_app/view/product/product_list/view/classic/classic_view.dart';
 import 'package:cocdaily_app/view/product/product_list/view/favorites/favorites_view.dart';
+import 'package:cocdaily_app/view/settings/view/privacy_policy_view.dart';
 import 'package:cocdaily_app/view/settings/view/settings_view.dart';
+import 'package:cocdaily_app/view/settings/view/svg_copyright_view.dart';
 import 'package:flutter/material.dart';
 import '../../../view/product/product_list/view/non_alcoholic/non_alcoholic_view.dart';
 import '../../base/screen_arguments/product_details_recipe_argument.dart';
@@ -58,8 +60,17 @@ class AppRouter {
             cardBackgroundColor: args.cardBackgroundColor,
             e: args.e,
             snapshot: args.snapshot,
+            changeIcon: args.changeIconColor,
             
           ),
+        );
+        case RouterConstant.PRIVACY_POLICY_VIEW:
+        return MaterialPageRoute(
+          builder: (_) => const PrivacyPolicyView(),
+        );
+        case RouterConstant.SVG_COPYRIGHT_VIEW:
+        return MaterialPageRoute(
+          builder: (_) => const SvgCopyrightView(),
         );
       default:
         return null;

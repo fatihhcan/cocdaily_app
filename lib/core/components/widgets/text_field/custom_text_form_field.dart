@@ -4,9 +4,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CustomTextFormField extends StatelessWidget {
   final String? labelText;
-  // final TextEditingController controller;
   final Icon? icon;
-  final ValueChanged<String> onChanged;
+  final ValueChanged<String>? onChanged;
   final TextInputType? keyboardType;
   final String? errorText;
   final bool isPasswordField;
@@ -18,7 +17,7 @@ class CustomTextFormField extends StatelessWidget {
       {Key? key,
       this.labelText,
       this.icon,
-      required this.onChanged,
+       this.onChanged,
       this.keyboardType,
       this.errorText,
       this.isPasswordField = false,
@@ -40,9 +39,6 @@ class CustomTextFormField extends StatelessWidget {
         obscureText: isPasswordField,
         decoration: InputDecoration(
             hintText: isRequiredField ? '$hint*' : hint,
-
-            //errorText: errorText,
-
             iconColor: context.customColors!.doveGray,
             prefixIconColor: context.customColors!.doveGray,
             enabledBorder: OutlineInputBorder(

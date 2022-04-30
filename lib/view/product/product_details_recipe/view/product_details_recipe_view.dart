@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import '../../../../core/base/cubits/language_cubit/language_cubit.dart';
 import '../../../../core/constants/image/image_path.dart';
 
 class ProductDetailsRecipeView extends StatelessWidget {
@@ -14,6 +15,7 @@ class ProductDetailsRecipeView extends StatelessWidget {
   final String? name;
   final String? recipe;
   final Color? cardBackgroundColor;
+  final bool changeIcon;
   final AsyncSnapshot<dynamic>? snapshot;
   final QueryDocumentSnapshot<Object?>? e;
   const ProductDetailsRecipeView(
@@ -23,7 +25,7 @@ class ProductDetailsRecipeView extends StatelessWidget {
       this.urlPhoto,
       this.cardBackgroundColor,
       this.e,
-      this.snapshot})
+      this.snapshot, this.changeIcon =false})
       : super(key: key);
 
   @override
@@ -89,7 +91,7 @@ class ProductDetailsRecipeView extends StatelessWidget {
         context.read<ShareSocialMediaCubit>().share(context, name!, recipe!);
       },
       child: SvgPicture.asset(
-        SVGImagePaths.instance!.shareRecipeSVG,
+       context.watch<LanguageCubit>().state ?  SVGImagePaths.instance!.shareRecipeSVG : SVGImagePaths.instance!.trShareRecipeSVG, 
         fit: BoxFit.cover,
       ),
     );
@@ -98,11 +100,16 @@ class ProductDetailsRecipeView extends StatelessWidget {
   GestureDetector buildFavoriteButton(
       BuildContext context, bool isFavoritesView) {
     return GestureDetector(
-      onTap: () => context
+      onTap: () =>  changeIcon ? context
           .read<FavoriteCubit>()
-          .productDetailFavorites(context, isFavoritesView, snapshot!, e!),
-      child: SvgPicture.asset(
-        SVGImagePaths.instance!.favoriteRecipeSVG,
+          .productDetailFavorites(context, true, snapshot!, e!) :  context
+          .read<FavoriteCubit>()
+          .productDetailFavorites(context, isFavoritesView, snapshot!, e!) ,
+      child: changeIcon ? SvgPicture.asset(
+       context.watch<LanguageCubit>().state ? SVGImagePaths.instance!.removeFavoriteRecipe : SVGImagePaths.instance!.trRemoveFavoriteRecipe,
+        fit: BoxFit.cover,
+      ) :SvgPicture.asset(
+       context.watch<LanguageCubit>().state ? SVGImagePaths.instance!.favoriteRecipeSVG : SVGImagePaths.instance!.trFavoriteRecipeSVG,
         fit: BoxFit.cover,
       ),
     );

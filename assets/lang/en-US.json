@@ -1,0 +1,57 @@
+{
+    
+    "about_app": "About App",
+    "ok": "Ok",
+    "change_password": "Change Password",
+    "new_password": "New Password",
+    "forgot_password": "Forgot Password",
+    "login_title": "LOGIN",
+    "register_title": "REGISTER",
+    "login_button": "Login",
+    "register_button": "Register",
+    "email": "Email",
+    "password": "Password",
+    "full_name": "Full Name",
+    "dont_have_an_account": "Don't have an account?",
+    "create_account": "Create Account",
+    "already_have_an_account": "Already have an account?",
+    "welcome_to": "Welcome to",
+    "welcome_to_the_cocktail_world": "Welcome to the cocktail world, ",
+    "categories": "Categories",
+    "non_alcoholic_cocktails": "Non-Alcoholic \nCocktails",
+    "alcoholic_cocktails": "Alcoholic \nCocktails",
+    "classic_cocktails": "Classic \nCocktails",
+    "favorites_cocktails": "Favorites \nCocktails",
+    "favorites": "Favorites",
+    "app_bar_non_alcoholic_cocktails": "Non-Alcoholic Cocktails",
+    "app_bar_alcoholic_cocktails": "Alcoholic Cocktails",
+    "app_bar_classic_cocktails": "Classic Cocktails",
+    "app_bar_favorites_cocktails": "Favorites Cocktails",
+    "settings": "Settings",
+    "language": "Language",
+    "logout": "Logout",
+    "loading": "Loading...",
+    "already_favorites_added": "Already favorites added.",
+    "favorites_added": "Added to favorites.",
+    "favorites_removed_added": "Removed from favorites.",
+    "undo": "Ok",
+    "password_reset_email_sent": "Password reset email sent.",
+    "password_reset": "Reset Password",
+    "receive_an_email_to_reset_password": "Yeni şifre oluşturma linki email adresinize gönderildi.",
+    "password_has_been_changed": "Receive an email to reset your password.",
+    "privacy_policy": "Privacy Policy",
+    "success": "Success",
+    "select_lang": "Select",
+    "tr_lang": "Turkish",
+    "en_lang": "English",
+    "svg_copyright": "SVG Copyright",
+    "do_not_have_any_favorite_cocktails": "You do not have any favorite cocktails."
+
+
+
+
+}
+
+
+
+

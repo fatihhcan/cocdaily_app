@@ -1,19 +1,21 @@
 import 'package:cocdaily_app/core/base/cubits/authentication_cubit/login_cubit/login_cubit.dart';
 import 'package:cocdaily_app/core/components/widgets/buttons/forgot_password_button.dart';
-import 'package:cocdaily_app/core/utility/shared/shared_prefs.dart';
-import 'package:cocdaily_app/view/authentication/login/components/login_button.dart';
 import 'package:cocdaily_app/core/components/widgets/cards/auth_background_bottom.dart';
-import 'package:cocdaily_app/core/constants/app/text_constants.dart';
 import 'package:cocdaily_app/core/constants/image/image_constants.dart';
+import 'package:cocdaily_app/core/extensions/string_extension.dart';
+import 'package:cocdaily_app/core/utility/shared/shared_prefs.dart';
+import 'package:cocdaily_app/view/authentication/login/components/forgot_password_alert_dialog.dart';
+import 'package:cocdaily_app/view/authentication/login/components/login_button.dart';
 import 'package:cocdaily_app/view/authentication/login/components/login_input_fields.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:formz/formz.dart';
-import '../../../../core/components/widgets/cards/auth_background_top.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../core/components/widgets/cards/auth_background_top.dart';
 import '../../../../core/components/widgets/snackbar/custom_snackbar.dart';
 import '../../../../core/constants/app/app_router_constants.dart';
+import '../../../../utils/locale_keys.g.dart';
 
 class LoginView extends StatelessWidget {
   const LoginView({Key? key}) : super(key: key);
@@ -65,7 +67,7 @@ class LoginView extends StatelessWidget {
         SizedBox(
           height: 15.h,
         ),
-        forgotPasswordButtonBuild(),
+        forgotPasswordButtonBuild(context),
         loginButtonBuild(context),
         const Spacer(),
         backgroundBottomWidgetBuild(context)
@@ -73,10 +75,12 @@ class LoginView extends StatelessWidget {
     );
   }
 
-  AuthBackGroundBottom backgroundBottomWidgetBuild(BuildContext context) => AuthBackGroundBottom(
-        onPressed: () =>Navigator.pushNamed(context, RouterConstant.REGISTER_VIEW),
-        title: TextConstants.dontHaveAnAccount,
-        titleButton: TextConstants.createAccount,
+  AuthBackGroundBottom backgroundBottomWidgetBuild(BuildContext context) =>
+      AuthBackGroundBottom(
+        onPressed: () =>
+            Navigator.pushNamed(context, RouterConstant.REGISTER_VIEW),
+        title: LocaleKeys.dont_have_an_account.locale,
+        titleButton: LocaleKeys.create_account.locale,
       );
 
   Padding loginButtonBuild(
@@ -84,21 +88,23 @@ class LoginView extends StatelessWidget {
   ) {
     return Padding(
       padding: EdgeInsets.only(left: 175.w),
-      child: const LoginButton(
-        title: TextConstants.loginButton,
+      child:  LoginButton(
+        title: LocaleKeys.login_button.locale,
       ),
     );
   }
 
-  ForgotPasswordButton forgotPasswordButtonBuild() {
+  ForgotPasswordButton forgotPasswordButtonBuild(BuildContext context) {
     return ForgotPasswordButton(
-      onPressed: (() {}),
-      title: TextConstants.forgotPassword,
+      onPressed: (() {
+        ForgotPasswordAlertDialog().showMyDialog(context);
+      }),
+      title: LocaleKeys.forgot_password.locale,
     );
   }
 
-  AuthBackGroundTop backgroundTopWidgetBuild() => const AuthBackGroundTop(
-        title: TextConstants.loginTitle,
+  AuthBackGroundTop backgroundTopWidgetBuild() => AuthBackGroundTop(
+        title: LocaleKeys.login_title.locale,
       );
   Image appLogoBuild() {
     return Image.asset(

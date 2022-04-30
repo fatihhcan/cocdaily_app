@@ -16,7 +16,10 @@ class CocktailCard extends StatelessWidget {
       required this.urlPhoto,
       required this.name,
       required this.cardBackgroundName,
-      this.onPressedFavorite, this.onPressedNextDetail, required this.favoriteIcon, this.onPressedNextDetailDetector})
+      this.onPressedFavorite,
+      this.onPressedNextDetail,
+      required this.favoriteIcon,
+      this.onPressedNextDetailDetector})
       : super(key: key);
 
   @override
@@ -27,11 +30,7 @@ class CocktailCard extends StatelessWidget {
         children: [
           buildCocktailsCard(),
           buildButtons(context),
-          Positioned(top:10.h,
-          bottom: 50.h,
-          left:0.w,right: 90.w,
-    
-            child: buildCocktailsImage(urlPhoto)),
+          buildCocktailsImage(urlPhoto),
           buildCocktailsName(context, name)
         ],
       ),
@@ -47,7 +46,7 @@ class CocktailCard extends StatelessWidget {
 
   Padding buildCocktailsName(BuildContext context, String name) {
     return Padding(
-      padding: EdgeInsets.only(top: 165.h, left: 50.w),
+      padding: EdgeInsets.only(top: 170.h, left: 50.w),
       child: Text(
         name,
         style: context.textTheme.headline3!.copyWith(fontSize: 12.sp),
@@ -58,10 +57,13 @@ class CocktailCard extends StatelessWidget {
 
   Padding buildCocktailsImage(String urlPhoto) {
     return Padding(
-      padding: EdgeInsets.only(top: 50.h, left: 70.w),
-      child: Image.network(urlPhoto, fit: 
-      BoxFit.contain,height: 180.0.h,
-            width: 180.0.w,),
+      padding: EdgeInsets.only(top: 60.h, left: 55.w, bottom: 70.h),
+      child: Image.network(
+        urlPhoto,
+        fit: BoxFit.contain,
+        height: 75.0.h,
+        width: 75.0.w,
+      ),
     );
   }
 
@@ -108,7 +110,7 @@ class CocktailCard extends StatelessWidget {
           onPressed: onPressedFavorite,
           elevation: 0,
           child: Icon(
-           favoriteIcon,
+            favoriteIcon,
             size: 16.h,
             color: Colors.white,
           ),

@@ -2,7 +2,6 @@ import 'package:cocdaily_app/core/extensions/context_extension.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
-
 import '../../../constants/image/image_path.dart';
 
 class AuthBackGroundBottom extends StatelessWidget {

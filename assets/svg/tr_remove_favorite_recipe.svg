@@ -1,0 +1,17 @@
+<svg id="Component_23_1" data-name="Component 23 – 1" xmlns="http://www.w3.org/2000/svg" width="81" height="25" viewBox="0 0 81 25">
+  <g id="Rectangle_54" data-name="Rectangle 54" fill="#707070" stroke="#707070" stroke-width="1">
+    <rect width="81" height="25" rx="12.5" stroke="none"/>
+    <rect x="0.5" y="0.5" width="80" height="24" rx="12" fill="none"/>
+  </g>
+  <text id="Favorite" transform="translate(30 6)" fill="#fff" font-size="10" font-family="Montserrat-SemiBold, Montserrat" font-weight="600"><tspan x="0" y="10">Favori</tspan></text>
+  <g id="Rectangle_55" data-name="Rectangle 55" fill="#fff" stroke="#fff" stroke-width="1">
+    <rect width="26" height="25" rx="12.5" stroke="none"/>
+    <rect x="0.5" y="0.5" width="25" height="24" rx="12" fill="none"/>
+  </g>
+  <g id="Layer_2" data-name="Layer 2" transform="translate(4 4)">
+    <g id="close">
+      <rect id="Rectangle_78" data-name="Rectangle 78" width="18" height="18" transform="translate(18 18) rotate(180)" fill="#707070" opacity="0"/>
+      <path id="Path_992" data-name="Path 992" d="M11.556,10.5l3.225-3.217a.753.753,0,0,0-1.065-1.065L10.5,9.441,7.281,6.216A.753.753,0,0,0,6.216,7.281L9.441,10.5,6.216,13.716a.753.753,0,1,0,1.065,1.065L10.5,11.556l3.218,3.225a.753.753,0,1,0,1.065-1.065Z" transform="translate(-1.499 -1.499)" fill="#707070"/>
+    </g>
+  </g>
+</svg>

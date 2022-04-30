@@ -9,5 +9,7 @@ class RouterConstant {
   static const CLASSIC_PRODUCT_VIEW = '/classicView';
   static const FAVORITES_PRODUCT_VIEW = '/favoritesView';
   static const PRODUCT_DETAIL_VIEW = '/productDetailView';
+  static const SVG_COPYRIGHT_VIEW = '/svgCopyrightView';
+  static const PRIVACY_POLICY_VIEW = '/privacyPolicyView';
   
 }

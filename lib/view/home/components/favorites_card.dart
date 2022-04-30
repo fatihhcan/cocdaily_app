@@ -2,7 +2,6 @@ import 'package:cocdaily_app/core/extensions/context_extension.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
-
 import '../../../core/constants/image/image_path.dart';
 
 class CustomFavoritesCard extends StatelessWidget {
@@ -10,7 +9,7 @@ class CustomFavoritesCard extends StatelessWidget {
   final String? urlPhoto;
   final IconData? iconFavorite;
   final void Function()? onPressedFavorite;
-  final void Function()? onPressedNextDetail;
+  final void Function()? onPressedNextDetail; 
   const CustomFavoritesCard(
       {Key? key,
       this.urlPhoto,

@@ -1,25 +1,19 @@
 import 'package:cocdaily_app/core/base/cubits/favorite_cubit/favorite_cubit.dart';
 import 'package:cocdaily_app/core/base/cubits/product_cubit/product_cubit.dart';
-import 'package:cocdaily_app/core/constants/app/text_constants.dart';
 import 'package:cocdaily_app/core/constants/image/image_path.dart';
 import 'package:cocdaily_app/core/extensions/context_extension.dart';
+import 'package:cocdaily_app/core/extensions/string_extension.dart';
 import 'package:cocdaily_app/view/product/product_list/components/product_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../../../utils/locale_keys.g.dart';
 
-class ClassicView extends StatefulWidget {
-  const ClassicView({
-    Key? key,
-  }) : super(key: key);
+class ClassicView extends StatelessWidget {
+  const ClassicView({Key? key}) : super(key: key);
 
-  @override
-  State<ClassicView> createState() => _ClassicViewState();
-}
-
-class _ClassicViewState extends State<ClassicView> {
   @override
   Widget build(BuildContext context) {
-    return MultiBlocProvider(
+    return  MultiBlocProvider(
         providers: [
           BlocProvider<ProductCubit>(
               create: (BuildContext context) =>
@@ -35,7 +29,7 @@ class _ClassicViewState extends State<ClassicView> {
                   .collectionReferenceClassicAlcoholicCocktails
                   .snapshots(),
               cardBackgroundName: SVGImagePaths.instance!.classicCardSVG,
-              appBarTitle: TextConstants.appBarClassicCocktails,
+              appBarTitle: LocaleKeys.app_bar_classic_cocktails.locale,
             );
           },
         )

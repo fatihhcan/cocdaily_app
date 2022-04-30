@@ -8,7 +8,8 @@ class ScreenArgumentProductDetailsRecipe {
   final Color? cardBackgroundColor;
   final AsyncSnapshot<dynamic> snapshot;
   final QueryDocumentSnapshot<Object?> e;
+  final bool changeIconColor;
 
   ScreenArgumentProductDetailsRecipe(
-      {this.urlPhoto, this.name, this.recipe, this.cardBackgroundColor, required this.e,required this.snapshot});
+      {this.urlPhoto, this.name, this.recipe, this.cardBackgroundColor, required this.e,required this.snapshot, required this.changeIconColor});
 }

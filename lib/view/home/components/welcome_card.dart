@@ -1,9 +1,9 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:cocdaily_app/core/extensions/context_extension.dart';
+import 'package:cocdaily_app/core/extensions/string_extension.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
-import '../../../core/constants/app/text_constants.dart';
+import '../../../utils/locale_keys.g.dart';
 
 class CustomWelcomeCard extends StatelessWidget {
   final String? userFullName;
@@ -20,7 +20,7 @@ class CustomWelcomeCard extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Text(
-            TextConstants.welcomeToTheCocktailWorld,
+           LocaleKeys.welcome_to_the_cocktail_world.locale,
             style: context.textTheme.headline4!
                 .copyWith(color: Colors.white, fontWeight: FontWeight.w500),
           ),

@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/base/cubits/favorite_cubit/favorite_cubit.dart';
+import '../../../../core/base/cubits/language_cubit/language_cubit.dart';
 
 class ProductList extends StatelessWidget {
   final String? cardBackgroundName;
@@ -42,7 +43,7 @@ class ProductList extends StatelessWidget {
   SafeArea buildBody() {
     return SafeArea(
         child: Padding(
-      padding: EdgeInsets.only(left: 25.w),
+      padding: EdgeInsets.only(left: 25.w, top: 25.h),
       child: StreamBuilder(
           stream: stream,
           builder:
@@ -65,16 +66,7 @@ class ProductList extends StatelessWidget {
       BuildContext context, AsyncSnapshot<QuerySnapshot<Object?>> snapshot) {
     return GridView(
       children: snapshot.data!.docs
-          .map((e) => StreamBuilder(
-              stream: FirebaseFirestore.instance
-                  .collection("UserFavoritesCocktails")
-                  .doc(FirebaseAuth.instance.currentUser!.email)
-                  .collection("Cocktails")
-                  .where("name", isEqualTo: e['name'])
-                  .snapshots(),
-              builder: (BuildContext context, AsyncSnapshot snapshot) {
-                return buildCocktailCard(context, e, snapshot);
-              }))
+          .map((e) => buildGridViewChildren(e))
           .toList(),
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,
@@ -82,24 +74,77 @@ class ProductList extends StatelessWidget {
     );
   }
 
-  CocktailCard buildCocktailCard(BuildContext context, QueryDocumentSnapshot<Object?> e, AsyncSnapshot<dynamic> snapshot) {
+  StreamBuilder<QuerySnapshot<Map<String, dynamic>>> buildGridViewChildren(QueryDocumentSnapshot<Object?> e) {
+    return StreamBuilder(
+            stream: FirebaseFirestore.instance
+                .collection("UserFavoritesCocktails")
+                .doc(FirebaseAuth.instance.currentUser!.email)
+                .collection("Cocktails")
+                .where("name", isEqualTo: e['name'])
+                .snapshots(),
+            builder: (BuildContext context, AsyncSnapshot snapshot) {
+              return buildCocktailCard(context, e, snapshot);
+            });
+  }
+
+  CocktailCard buildCocktailCard(BuildContext context,
+      QueryDocumentSnapshot<Object?> e, AsyncSnapshot<dynamic> snapshot) {
     return CocktailCard(
-                  onPressedNextDetailDetector: () => context
-                      .read<FavoriteCubit>()
-                      .nextDetailViewNavigate(context, e["name"],
-                          e["urlPhoto"], e["recipe"], cardBackgroundColor!,snapshot, e, ),
-                  onPressedNextDetail: () => context
-                      .read<FavoriteCubit>()
-                      .nextDetailViewNavigate(context, e["name"],
-                          e["urlPhoto"], e["recipe"], cardBackgroundColor!,snapshot, e,),
-                  favoriteIcon: iconFavorite!,
-                  onPressedFavorite: (() {
-                    context.read<FavoriteCubit>().productDetailFavorites(
-                        context, isFavoritesView, snapshot, e);
-                  }),
-                  urlPhoto: e['urlPhoto'],
-                  name: e['name'],
-                  cardBackgroundName: cardBackgroundName!);
+        onPressedNextDetailDetector: () async {
+          if (context.read<LanguageCubit>().state == false) {
+            await context.read<FavoriteCubit>().nextDetailViewNavigate(
+                context,
+                e["name"],
+                e["urlPhoto"],
+                e["recipeTR"],
+                cardBackgroundColor!,
+                snapshot,
+                e,
+                isFavoritesView ? true : false);
+          } else {
+            await context.read<FavoriteCubit>().nextDetailViewNavigate(
+                context,
+                e["name"],
+                e["urlPhoto"],
+                e["recipe"],
+                cardBackgroundColor!,
+                snapshot,
+                e,
+                isFavoritesView ? true : false);
+          }
+        },
+        onPressedNextDetail: () async {
+          if (context.read<LanguageCubit>().state == false) {
+            await context.read<FavoriteCubit>().nextDetailViewNavigate(
+                context,
+                e["name"],
+                e["urlPhoto"],
+                e["recipeTR"],
+                cardBackgroundColor!,
+                snapshot,
+                e,
+                isFavoritesView ? true : false);
+          } else {
+            await context.read<FavoriteCubit>().nextDetailViewNavigate(
+                context,
+                e["name"],
+                e["urlPhoto"],
+                e["recipe"],
+                cardBackgroundColor!,
+                snapshot,
+                e,
+                isFavoritesView ? true : false);
+          }
+        },
+        favoriteIcon: iconFavorite!,
+        onPressedFavorite: (() {
+          context
+              .read<FavoriteCubit>()
+              .productDetailFavorites(context, isFavoritesView, snapshot, e);
+        }),
+        urlPhoto: e['urlPhoto'],
+        name: e['name'],
+        cardBackgroundName: cardBackgroundName!);
   }
 
   AppBar buildAppBar(BuildContext context) {

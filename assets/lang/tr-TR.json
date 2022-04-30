@@ -1,0 +1,57 @@
+{
+    
+     "about_app": "Uygulama Hakkında",
+     "ok": "Tamam",
+     "change_password": "Şifre Değiştir",
+     "new_password": "Yeni Şifre",
+     "forgot_password": "Şifremi Unuttum",
+     "login_title": "GİRİŞ",
+     "register_title": "ÜYE OL",
+     "login_button": "Giriş",
+     "register_button": "Üye Ol",
+     "email": "Email",
+     "password": "Şifre",
+     "full_name": "İsim ve Soyisim",
+     "dont_have_an_account": "Üye değil misiniz?",
+     "create_account": "Üye Ol",
+     "already_have_an_account": "Daha önce üye oldun mu?",
+     "welcome_to": "Hoş geldin",
+     "welcome_to_the_cocktail_world": "Kokteyl dünysına hoş geldin, ",
+     "categories": "Kategoriler",
+     "non_alcoholic_cocktails": "Alkolsüz \nKokteyller",
+     "alcoholic_cocktails": "Alkollü \nKokteyller",
+     "classic_cocktails": "Klasik \nKokteyller",
+     "favorites_cocktails": "Favori \nKokteyller",
+     "favorites": "Favoriler",
+     "app_bar_non_alcoholic_cocktails": "Alkolsüz Kokteyller",
+     "app_bar_alcoholic_cocktails": "Alkollü Kokteyller",
+     "app_bar_classic_cocktails": "Klasik Kokteyller",
+     "app_bar_favorites_cocktails": "Favori Kokteyller",
+     "settings": "Ayarlar",
+     "language": "Dil Değiştir",
+     "logout": "Çıkış Yap",
+     "loading": "Yükleniyor...",
+     "already_favorites_added": "Bu kokteyl favorilerde bulunuyor.",
+     "favorites_added": "Favorilere eklendi.",
+     "favorites_removed_added": "Favorilerden çıkarıldı.",
+     "undo": "Tamam",
+     "password_reset_email_sent": "Şifrenizi yenileme linki email adresinize gönderildi.",
+     "password_reset": "Yeni Şifre Oluştur",
+     "receive_an_email_to_reset_password": "Yeni şifre oluşturma linki email adresinize gönderildi.",
+     "password_has_been_changed": "Şifreniz değiştirildi. Lütfen tekrar giriş yapınız.",
+     "privacy_policy": "Gizlilik Politikası",
+     "success": "Başarılı",
+     "select_lang": "Seç",
+     "tr_lang": "Türkçe",
+     "en_lang": "İngilizce",
+     "svg_copyright": "SVG Telif Hakkı",
+     "do_not_have_any_favorite_cocktails": "Favori kokteyl bulunmamaktadır."
+
+   
+
+    
+
+}
+
+
+

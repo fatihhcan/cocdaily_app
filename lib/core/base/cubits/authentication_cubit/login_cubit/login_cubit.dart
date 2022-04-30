@@ -1,6 +1,5 @@
 import 'package:bloc/bloc.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_auth_oauth/firebase_auth_oauth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:formz/formz.dart';
@@ -9,8 +8,8 @@ import '../../../../utility/shared/shared_prefs.dart';
 import '../../../validations/email.dart';
 import '../../../validations/password.dart';
 
-part 'login_state.dart';
 part 'login_cubit.freezed.dart';
+part 'login_state.dart';
 
 class LoginCubit extends Cubit<LoginState> {
   LoginCubit(this.context) : super(const LoginState.initial());
@@ -57,34 +56,6 @@ class LoginCubit extends Cubit<LoginState> {
     }
   }
 
-  Future<void> performLogin(
-      {required String provider,
-      required scopes,
-      Map<String, String>? parameters}) async {
-    await FirebaseAuthOAuth()
-        .openSignInFlow(provider, scopes, parameters)
-        .then((value) => value);
-  }
-
-  void resetPassword() async {
-    try {
-      emit(state.copyWith(status: FormzStatus.submissionInProgress));
-      await _auth.sendPasswordResetEmail(email: state.email.value);
-      emit(state.copyWith(status: FormzStatus.submissionSuccess));
-    } on FirebaseAuthException catch (error) {
-      emit(state.copyWith(
-          exceptionError: error.message.toString(),
-          status: FormzStatus.submissionFailure));
-    } on PlatformException catch (error) {
-      emit(state.copyWith(
-          exceptionError: error.message.toString(),
-          status: FormzStatus.submissionFailure));
-    } catch (error) {
-      emit(state.copyWith(
-          exceptionError: "Unexpected error please try again later",
-          status: FormzStatus.submissionFailure));
-    }
-  }
 
   void signOut() async {
     try {

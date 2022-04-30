@@ -22,6 +22,7 @@ class HomeCubit extends Cubit<HomeCubitState> {
         "name": qn.docs[i]["name"],
         "urlPhoto": qn.docs[i]["urlPhoto"],
         "recipe": qn.docs[i]["recipe"],
+        "recipeTR": qn.docs[i]["recipeTR"],
       });
     }
     return qn.docs;

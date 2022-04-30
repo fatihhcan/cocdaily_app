@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="246" height="205" viewBox="0 0 246 205">
+  <defs>
+    <filter id="Rectangle_75" x="0" y="0" width="246" height="205" filterUnits="userSpaceOnUse">
+      <feOffset dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feFlood flood-opacity="0.161"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="Component_13_1" data-name="Component 13 – 1" transform="translate(9 6)">
+    <g id="Component_7_1" data-name="Component 7 – 1">
+      <g transform="matrix(1, 0, 0, 1, -9, -6)" filter="url(#Rectangle_75)">
+        <g id="Rectangle_75-2" data-name="Rectangle 75" transform="translate(9 6)" fill="#ffe2e2" stroke="#ffe2e2" stroke-width="1">
+          <rect width="228" height="187" rx="10" stroke="none"/>
+          <rect x="0.5" y="0.5" width="227" height="186" rx="9.5" fill="none"/>
+        </g>
+      </g>
+      <path id="favorite-svgrepo-com" d="M37.923,11.209A14.985,14.985,0,0,0,26.379,16.6a14.985,14.985,0,0,0-11.545-5.391A14.666,14.666,0,0,0,0,25.666c0,6.261,3.839,13.512,11.409,21.55A109.185,109.185,0,0,0,25.4,59.531l.98.718.98-.718A109.18,109.18,0,0,0,41.348,47.216c7.571-8.038,11.41-15.289,11.41-21.55A14.666,14.666,0,0,0,37.923,11.209Z" transform="translate(87.621 48.771)" fill="#707070"/>
+    </g>
+    <text id="Favorite_Cocktails" data-name="Favorite
+Cocktails" transform="translate(18 133)" fill="#707070" font-size="20" font-family="Montserrat-Medium, Montserrat" font-weight="500"><tspan x="65.73" y="19">Favori</tspan><tspan x="50.87" y="43">Kokteyller</tspan></text>
+  </g>
+</svg>

@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:lottie/lottie.dart';
-
 import '../../../constants/image/image_path.dart';
-
 class CustomProgressIndicator extends StatelessWidget {
   const CustomProgressIndicator({Key? key}) : super(key: key);
 

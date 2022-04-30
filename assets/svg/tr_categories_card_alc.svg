@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="246" height="205" viewBox="0 0 246 205">
+  <defs>
+    <filter id="Rectangle_7" x="0" y="0" width="246" height="205" filterUnits="userSpaceOnUse">
+      <feOffset dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feFlood flood-opacity="0.161"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="Component_11_1" data-name="Component 11 – 1" transform="translate(9 6)">
+    <g id="Component_5_1" data-name="Component 5 – 1">
+      <g transform="matrix(1, 0, 0, 1, -9, -6)" filter="url(#Rectangle_7)">
+        <g id="Rectangle_7-2" data-name="Rectangle 7" transform="translate(9 6)" fill="#a6d6d6" stroke="#a6d6d6" stroke-width="1">
+          <rect width="228" height="187" rx="10" stroke="none"/>
+          <rect x="0.5" y="0.5" width="227" height="186" rx="9.5" fill="none"/>
+        </g>
+      </g>
+      <g id="alcoholic-drinks-alcohol-svgrepo-com" transform="translate(43.104 31.884)">
+        <g id="Group_28313" data-name="Group 28313" transform="translate(55.467 4.267)">
+          <path id="Path_988" data-name="Path 988" d="M48.467,69.812H75.325V48.639H48.467ZM58.539,15.366h6.715V3.267H58.539Z" transform="translate(-48.467 -3.267)" fill="#707070"/>
+          <path id="Path_989" data-name="Path 989" d="M48.467,141.539H75.325V126.32H48.467Zm26.858-36.525H48.467A17.057,17.057,0,0,1,50.146,97.4s8.393-13.7,8.393-22.828V71.533h6.715v3.044c0,9.131,8.393,22.828,8.393,22.828A17.057,17.057,0,0,1,75.325,105.014Z" transform="translate(-48.467 -57.691)" fill="#707070"/>
+        </g>
+      </g>
+    </g>
+    <text id="Alcoholic_Cocktails" data-name="Alcoholic Cocktails" transform="translate(18 133)" fill="#707070" font-size="20" font-family="Montserrat-Medium, Montserrat" font-weight="500"><tspan x="60.57" y="19">Alkollü </tspan><tspan x="45.87" y="43">Kokteyller</tspan></text>
+  </g>
+</svg>

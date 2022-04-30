@@ -1,4 +1,4 @@
-class TextConstants {
+/* class TextConstants {
   static const loginTitle = 'LOGIN';
   static const registerTitle = 'REGISTER';
   static const loginButton = 'Login';
@@ -32,5 +32,11 @@ class TextConstants {
   static const favoritesAdded = "Added to favorites.";
   static const favoritesRemovedFromFavorites = "Removed from favorites.";
   static const undo = "Undo";
+  static const passwordResetEmailSent = "Password reset email sent.";
+  static const resetPassword = "Reset Password";
+  static const receiveAnEmailToResetYourPassword = "Receive an email to reset your password.";
+  static const yourPasswordHasBeenChanged = "Your password has been changed. Plesea login again.";
+
 
 }
+ */

@@ -1,8 +1,8 @@
 import 'package:cocdaily_app/core/components/widgets/buttons/forgot_password_button.dart';
 import 'package:cocdaily_app/core/components/widgets/cards/auth_background_bottom.dart';
-import 'package:cocdaily_app/core/constants/app/text_constants.dart';
 import 'package:cocdaily_app/core/constants/image/image_constants.dart';
 import 'package:cocdaily_app/core/extensions/context_extension.dart';
+import 'package:cocdaily_app/core/extensions/string_extension.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -11,6 +11,7 @@ import '../../../../core/base/cubits/authentication_cubit/sign_up_cubit/sign_up_
 import '../../../../core/components/widgets/cards/auth_background_top.dart';
 import '../../../../core/constants/app/app_router_constants.dart';
 import '../../../../core/utility/shared/shared_prefs.dart';
+import '../../../../utils/locale_keys.g.dart';
 import '../components/sign_up_button.dart';
 import '../components/sign_up_input_fields.dart';
 
@@ -54,7 +55,7 @@ class SignUpView extends StatelessWidget {
         SizedBox(
           height: 25.h,
         ),
-        Text(TextConstants.welcomeTo,
+        Text(LocaleKeys.welcome_to.locale,
             style: context.textTheme.headline1!
                 .copyWith(fontWeight: FontWeight.w500)),
         appLogoBuild(),
@@ -82,8 +83,8 @@ class SignUpView extends StatelessWidget {
 
   AuthBackGroundBottom backgroundBottomWidgetBuild(BuildContext context) => AuthBackGroundBottom(
         onPressed: () => Navigator.pushNamed(context, RouterConstant.LOGIN_VIEW),
-        title: TextConstants.alreadyHaveAnAccount,
-        titleButton: TextConstants.loginButton,
+        title: LocaleKeys.already_have_an_account.locale,
+        titleButton: LocaleKeys.login_button.locale,
       );
 
   Padding registerButtonBuild(BuildContext context) {
@@ -93,7 +94,7 @@ class SignUpView extends StatelessWidget {
         onPressed: (() {
           context.read<SignUpCubit>().signUpWithCredentials();
         }),
-        title: TextConstants.registerButton,
+        title: LocaleKeys.register_button.locale,
       ),
     );
   }
@@ -101,12 +102,12 @@ class SignUpView extends StatelessWidget {
   ForgotPasswordButton forgotPasswordButtonBuild() {
     return ForgotPasswordButton(
       onPressed: (() {}),
-      title: TextConstants.forgotPassword,
+      title: LocaleKeys.forgot_password.locale,
     );
   }
 
-  AuthBackGroundTop backgroundTopWidgetBuild() => const AuthBackGroundTop(
-        title: TextConstants.registerTitle,
+  AuthBackGroundTop backgroundTopWidgetBuild() =>  AuthBackGroundTop(
+        title: LocaleKeys.register_title.locale,
       );
   Image appLogoBuild() {
     return Image.asset(

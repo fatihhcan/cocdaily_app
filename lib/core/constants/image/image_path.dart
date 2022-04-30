@@ -26,5 +26,15 @@ class SVGImagePaths {
   final loadingJSON = 'assets/json/loading.json';   //JSON - LOADING 
   final favoriteRecipeSVG = 'favorite_recipe'.toSVG;
   final shareRecipeSVG = 'share_recipe'.toSVG;
-
+  final favoritesEmptySVG = 'favorites_empty'.toSVG;
+  final removeFavoriteRecipe = 'remove_favorite_recipe'.toSVG;
+  final trCategoriesCardNonSVG = 'tr_categories_card_non'.toSVG;
+  final trCategoriesCardAlcSVG = 'tr_categories_card_alc'.toSVG;
+  final trCategoriesCardClsSVG = 'tr_categories_card_cls'.toSVG;
+  final trCategoriesCardFavoritesSVG = 'tr_categories_card_favorites'.toSVG;
+  final trFavoriteRecipeSVG = 'tr_favorite_recipe'.toSVG;
+  final trShareRecipeSVG = 'tr_share_recipe'.toSVG;
+  final trFavoritesEmptySVG = 'tr_favorites_empty'.toSVG;
+  final trRemoveFavoriteRecipe = 'tr_remove_favorite_recipe'.toSVG;
+  
 }

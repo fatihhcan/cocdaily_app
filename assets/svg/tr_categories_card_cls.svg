@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="246" height="205" viewBox="0 0 246 205">
+  <defs>
+    <filter id="Rectangle_11" x="0" y="0" width="246" height="205" filterUnits="userSpaceOnUse">
+      <feOffset dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feFlood flood-opacity="0.161"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="Component_12_1" data-name="Component 12 – 1" transform="translate(9 6)">
+    <g id="Component_6_1" data-name="Component 6 – 1">
+      <g transform="matrix(1, 0, 0, 1, -9, -6)" filter="url(#Rectangle_11)">
+        <g id="Rectangle_11-2" data-name="Rectangle 11" transform="translate(9 6)" fill="#ffab76" stroke="#ffab76" stroke-width="1">
+          <rect width="228" height="187" rx="10" stroke="none"/>
+          <rect x="0.5" y="0.5" width="227" height="186" rx="9.5" fill="none"/>
+        </g>
+      </g>
+      <g id="champagne-glass-alcoholic-drinks-svgrepo-com" transform="translate(-182.3 51.141)">
+        <g id="Group_28317" data-name="Group 28317" transform="translate(285.585)">
+          <g id="Group_28316" data-name="Group 28316">
+            <path id="Path_991" data-name="Path 991" d="M310.14,60.9h-6.465V49.843A14.559,14.559,0,0,0,314.009,35.81V3.979A3.928,3.928,0,0,0,310.134,0H289.467a3.928,3.928,0,0,0-3.875,3.979V35.81a14.559,14.559,0,0,0,10.334,14.033V60.9H289.46a3.98,3.98,0,0,0,0,7.958h20.68a3.98,3.98,0,0,0,0-7.958Zm-16.8-44.986V7.958h12.917v7.958Z" transform="translate(-285.585)" fill="#707070"/>
+          </g>
+        </g>
+      </g>
+    </g>
+    <text id="Classic_Cocktails" data-name="Classic 
+Cocktails" transform="translate(20 133)" fill="#707070" font-size="20" font-family="Montserrat-Medium, Montserrat" font-weight="500"><tspan x="70.52" y="19">Klasik </tspan><tspan x="49.87" y="43">Kokteyller</tspan></text>
+  </g>
+</svg>

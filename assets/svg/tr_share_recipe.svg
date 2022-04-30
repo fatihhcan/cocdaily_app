@@ -1,0 +1,17 @@
+<svg id="Component_21_1" data-name="Component 21 – 1" xmlns="http://www.w3.org/2000/svg" width="133" height="30" viewBox="0 0 133 30">
+  <g id="Component_20_1" data-name="Component 20 – 1" transform="translate(0 5)">
+    <g id="Rectangle_43" data-name="Rectangle 43" fill="#707070" stroke="#707070" stroke-width="1">
+      <rect width="133" height="25" rx="12.5" stroke="none"/>
+      <rect x="0.5" y="0.5" width="132" height="24" rx="12" fill="none"/>
+    </g>
+    <text id="Share_The_Recipe" data-name="Share The Recipe" transform="translate(10 6)" fill="#fff" font-size="10" font-family="Montserrat-SemiBold, Montserrat" font-weight="600"><tspan x="20" y="10">Tarifi Paylaş</tspan></text>
+    <g id="Rectangle_43-2" data-name="Rectangle 43" transform="translate(107)" fill="#fff" stroke="#fff" stroke-width="1">
+      <rect width="26" height="25" rx="12.5" stroke="none"/>
+      <rect x="0.5" y="0.5" width="25" height="24" rx="12" fill="none"/>
+    </g>
+  </g>
+  <g id="share_white_24dp" transform="translate(1.289)">
+    <path id="Path_925" data-name="Path 925" d="M0,0H24V24H0Z" fill="none"/>
+    <path id="Path_926" data-name="Path 926" d="M12.036,10.482a1.754,1.754,0,0,0-1.181.464l-4.3-2.5a1.667,1.667,0,0,0,0-.843l4.247-2.476a1.8,1.8,0,1,0-.578-1.319,1.972,1.972,0,0,0,.054.422L6.036,6.7a1.807,1.807,0,1,0,0,2.639l4.289,2.506a1.7,1.7,0,0,0-.048.392,1.759,1.759,0,1,0,1.759-1.759Zm0-7.277a.6.6,0,1,1-.6.6A.6.6,0,0,1,12.036,3.2ZM4.807,8.627a.6.6,0,1,1,.6-.6A.6.6,0,0,1,4.807,8.627Zm7.229,4.229a.6.6,0,1,1,.6-.6A.6.6,0,0,1,12.036,12.855Z" transform="translate(109.578 10)" fill="#707070"/>
+  </g>
+</svg>

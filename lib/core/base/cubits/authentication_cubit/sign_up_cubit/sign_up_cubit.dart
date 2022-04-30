@@ -37,15 +37,6 @@ class SignUpCubit extends Cubit<SignUpState> {
     ));
   }
 
-  void rePasswordChanged(String value) {
-    final rePassword = RePassword.dirty(value);
-    emit(state.copyWith(
-      rePassword: rePassword,
-      status:
-          Formz.validate([state.name, state.email, state.password, rePassword]),
-    ));
-  }
-
   void nameChanged(String value) {
     final name = Name.dirty(value);
     emit(state.copyWith(

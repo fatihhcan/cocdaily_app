@@ -14,6 +14,7 @@ dependencies:
   build_runner: ^2.1.7
   cloud_firestore: ^3.1.11
   cupertino_icons: ^1.0.2
+  easy_localization: ^3.0.0
   equatable: ^2.0.3
   firebase_auth: ^3.3.9
   firebase_auth_oauth: ^1.2.0
@@ -31,6 +32,7 @@ dependencies:
   lottie: ^1.2.2
   share: ^2.0.4
   shared_preferences: ^2.0.13
+  webview_flutter: ^3.0.2
 
 dev_dependencies:
   flutter_lints: ^1.0.0
@@ -45,4 +47,5 @@ flutter:
     - assets/svg/
     - assets/images/
     - assets/json/
+    - assets/lang/
   #   - images/a_dot_ham.jpeg

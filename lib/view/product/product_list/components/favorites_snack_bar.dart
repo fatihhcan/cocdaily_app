@@ -1,6 +1,7 @@
-import 'package:cocdaily_app/core/constants/app/text_constants.dart';
 import 'package:cocdaily_app/core/extensions/context_extension.dart';
+import 'package:cocdaily_app/core/extensions/string_extension.dart';
 import 'package:flutter/material.dart';
+import '../../../../utils/locale_keys.g.dart';
 
 
 class FavoritesSnackBar {
@@ -13,9 +14,8 @@ class FavoritesSnackBar {
       ),
       backgroundColor: context.customColors!.yourPink,
       action: SnackBarAction(
-        label: TextConstants.undo,
+        label: LocaleKeys.undo.locale,
         onPressed: () {
-          print("UNDO");
         },
       ),
     );

@@ -26,7 +26,7 @@ class ProductCubit extends Cubit<ProductCubitState> {
   List productsAlcoholic = [];
   List productsNonAlcoholic = [];
   List productsClassic = [];
-  List _products = [];
+  int favoritesLength = 0;
   var _firestoreInstance = FirebaseFirestore.instance;
   ProductCubit() : super(ProductCubitInitial());
 
@@ -35,6 +35,7 @@ class ProductCubit extends Cubit<ProductCubitState> {
     await fetchProductsAlcoholic();
     await fetchProductsNonAlcoholic();
     await fetchProductsClassic();
+    await fetchProductsFavorites();
     emit(ProductCubitCompleted());
   }
 
@@ -46,6 +47,7 @@ class ProductCubit extends Cubit<ProductCubitState> {
         "name": qn.docs[i]["name"],
         "urlPhoto": qn.docs[i]["urlPhoto"],
         "recipe": qn.docs[i]["recipe"],
+        "recipeTR": qn.docs[i]["recipeTR"],
       });
       productsAlcoholic[i];
     }
@@ -60,6 +62,7 @@ class ProductCubit extends Cubit<ProductCubitState> {
         "name": qn.docs[i]["name"],
         "urlPhoto": qn.docs[i]["urlPhoto"],
         "recipe": qn.docs[i]["recipe"],
+        "recipeTR": qn.docs[i]["recipeTR"],
       });
       productsNonAlcoholic[i];
     }
@@ -74,14 +77,17 @@ class ProductCubit extends Cubit<ProductCubitState> {
         .doc(currentUser!.email)
         .collection("Cocktails");
     QuerySnapshot qn = await collectionReferenceFavoritesCocktails.get();
-
+ emit(ProductCubitLoading());
     for (int i = 0; i < qn.docs.length; i++) {
       productsFavorites.add({
         "name": qn.docs[i]["name"],
         "urlPhoto": qn.docs[i]["urlPhoto"],
         "recipe": qn.docs[i]["recipe"],
+        "recipeTR": qn.docs[i]["recipeTR"],
       });
+      emit(ProductCubitCompleted());
       productsFavorites[i];
+      favoritesLength = qn.docs.length;
     }
     return qn.docs;
   }
@@ -94,6 +100,7 @@ class ProductCubit extends Cubit<ProductCubitState> {
         "name": qn.docs[i]["name"],
         "urlPhoto": qn.docs[i]["urlPhoto"],
         "recipe": qn.docs[i]["recipe"],
+        "recipeTR": qn.docs[i]["recipeTR"],
       });
       productsClassic[i];
     }

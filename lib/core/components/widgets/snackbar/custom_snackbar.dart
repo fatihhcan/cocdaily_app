@@ -1,4 +1,6 @@
+import 'package:cocdaily_app/core/extensions/string_extension.dart';
 import 'package:flutter/material.dart';
+import '../../../../utils/locale_keys.g.dart';
 
 SnackBar snackBarWhenFailure({required String snackBarFailureText}) {
   return SnackBar(
@@ -8,8 +10,8 @@ SnackBar snackBarWhenFailure({required String snackBarFailureText}) {
 }
 
 SnackBar snackBarWhenSuccess() {
-  return const SnackBar(
-    content: Text("Success!"),
+  return  SnackBar(
+    content: Text(LocaleKeys.success.locale),
     backgroundColor: Colors.green,
   );
 }
