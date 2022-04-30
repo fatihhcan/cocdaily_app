@@ -32,11 +32,13 @@
 
 - For Back-End services Firestore Database - Storage - Authentication.
 
-- Easy Localization was used for language switching.
+- Easy **Localization** was used for language switching.
 
-- A Web View Flutter was used for the WebView.
+- A **Web View Flutter** was used for the WebView.
 
-- For validation procedures, Formz was used.
+- For validation procedures, **Formz** was used.
+
+- **Share** was used for social media sharing.
 
 
 ## Flutter Packages Available in the Project:
