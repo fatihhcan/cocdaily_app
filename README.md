@@ -26,11 +26,11 @@
 
 ## Subject:
 
-- BLoC/Cubit was used for State Management.
+- **BLoC/Cubit** was used for State Management.
 
-- SharedPrefs was used for the caching process.
+- **SharedPrefs** was used for the caching process.
 
-- For Back-End services Firestore Database - Storage - Authentication.
+- For Back-End services **Firestore Database - Storage - Authentication**.
 
 - Easy **Localization** was used for language switching.
 
