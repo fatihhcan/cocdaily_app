@@ -18,10 +18,13 @@ class SettingsView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: context.customColors!.manatee,
-      appBar: buildAppBar(context),
-      body: buildBody(context),
+    return WillPopScope(
+      onWillPop: () async => false,
+      child: Scaffold(
+        backgroundColor: context.customColors!.manatee,
+        appBar: buildAppBar(context),
+        body: buildBody(context),
+      ),
     );
   }
 

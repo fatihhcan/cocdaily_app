@@ -26,44 +26,59 @@ class ChangePasswordAlertDialog {
           content: SingleChildScrollView(
             child: ListBody(
               children: [
-                
-                CustomTextFormField(
-                  controller: controller,
-                  labelText: LocaleKeys.new_password.locale,
-                  icon: Icon(
-                    Icons.key,
-                    color: context.customColors!.doveGray,
-                    size: 20.h,
-                  ),
-                  hint: LocaleKeys.new_password.locale,
-                  keyboardType: TextInputType.emailAddress,
+                buildNewPassword(context),
+                SizedBox(
+                  height: 15.h,
                 ),
-                SizedBox(height: 15.h,),
-                Text(LocaleKeys.change_password_info.locale, style: context.textTheme.bodyText2,),
-
+                buildInfo(context),
               ],
             ),
           ),
           actions: [
-            TextButton(
-              child: Text(
-                LocaleKeys.change_password.locale,
-                style: context.textTheme.bodyText2,
-              ),
-              onPressed: () {
-           if (controller.text.isNotEmpty && controller.text.length >= 6) {
-                  context
-                    .read<ChangePasswordCubit>()
-                    .changePassword(context, controller.text);
-                FavoritesSnackBar().showSnackFavorites(
-                    context, LocaleKeys.password_has_been_changed.locale,);
-               Navigator.pushNamed(context, RouterConstant.LOGIN_VIEW);
-           } 
-              },
-            ),
+            buildChangePasswordButton(context),
           ],
         );
       },
+    );
+  }
+
+  TextButton buildChangePasswordButton(BuildContext context) {
+    return TextButton(
+      child: Text(
+        LocaleKeys.change_password.locale,
+        style: context.textTheme.bodyText2,
+      ),
+      onPressed: () {
+        if (controller.text.isNotEmpty && controller.text.length >= 6) {
+          context
+              .read<ChangePasswordCubit>()
+              .changePassword(context, controller.text);
+          FavoritesSnackBar().showSnackFavorites(
+            context,
+            LocaleKeys.password_has_been_changed.locale,
+          );
+          Navigator.pushNamed(context, RouterConstant.LOGIN_VIEW);
+        }
+      },
+    );
+  }
+
+  Text buildInfo(BuildContext context) => Text(
+        LocaleKeys.change_password_info.locale,
+        style: context.textTheme.bodyText2,
+      );
+
+  CustomTextFormField buildNewPassword(BuildContext context) {
+    return CustomTextFormField(
+      controller: controller,
+      labelText: LocaleKeys.new_password.locale,
+      icon: Icon(
+        Icons.key,
+        color: context.customColors!.doveGray,
+        size: 20.h,
+      ),
+      hint: LocaleKeys.new_password.locale,
+      keyboardType: TextInputType.emailAddress,
     );
   }
 }

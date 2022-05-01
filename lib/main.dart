@@ -1,3 +1,4 @@
+import 'package:cocdaily_app/core/base/bloc_providers/bloc_providers.dart';
 import 'package:cocdaily_app/core/base/cubits/authentication_cubit/change_password/change_password_cubit.dart';
 import 'package:cocdaily_app/core/base/cubits/authentication_cubit/forgot_password_cubit/forgot_password_cubit.dart';
 import 'package:cocdaily_app/core/base/cubits/authentication_cubit/login_cubit/login_cubit.dart';
@@ -18,12 +19,8 @@ import 'core/constants/app/locale_constant.dart';
 import 'core/constants/router/app_router.dart';
 import 'core/utility/shared/shared_prefs.dart';
 
-void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
-  await SharedPrefs.initialize();
-  await EasyLocalization.ensureInitialized();
-
+Future<void> main() async {
+  await buildInit();
   runApp(
     EasyLocalization(
       path: LocaleConstant.LANG_PATH,
@@ -33,46 +30,33 @@ void main() async {
   );
 }
 
+Future<void> buildInit() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  await SharedPrefs.initialize();
+  await EasyLocalization.ensureInitialized();
+}
+
 class MyApp extends StatelessWidget {
   final AppRouter _appRouter = AppRouter();
 
-   MyApp({Key? key}) : super(key: key);
+  MyApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
-      providers: [
-        BlocProvider(
-        create: (_) => LoginCubit(context)), BlocProvider(
-        create: (_) => SignUpCubit()),
-        BlocProvider(
-        create: (_) => ProductCubit()),
-        BlocProvider(
-        create: (_) => FavoriteCubit()),
-        BlocProvider(
-        create: (_) => HomeCubit()),
-        BlocProvider(
-        create: (_) => ShareSocialMediaCubit()),
-        BlocProvider(
-        create: (_) => ForgotPasswordCubit()),
-        BlocProvider(
-        create: (_) => ChangePasswordCubit()),
-        BlocProvider(
-        create: (_) => LanguageCubit()),
-        BlocProvider(
-        create: (_) => ProductDetailCubit()),
-      ],
+      providers: BlocProvidersList().multiBlocProviders,
       child: ScreenUtilInit(
         designSize: const Size(428, 926),
         builder: () => MaterialApp(
-            debugShowCheckedModeBanner: false,
-            theme: AppThemeLight.instance.theme,
-            title: 'Cocdaily',
+          debugShowCheckedModeBanner: false,
+          theme: AppThemeLight.instance.theme,
+          title: 'Cocdaily',
           onGenerateRoute: _appRouter.onGenerateRoute,
           supportedLocales: context.supportedLocales,
           localizationsDelegates: context.localizationDelegates,
           locale: context.locale,
-            ),
+        ),
       ),
     );
   }

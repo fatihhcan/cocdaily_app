@@ -31,9 +31,12 @@ class ProductDetailsRecipeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     bool isFavoritesView = false;
-    return Scaffold(
-      appBar: buildAppBar(context),
-      body: buildBody(context, isFavoritesView),
+    return WillPopScope(
+      onWillPop: () async => false,
+      child: Scaffold(
+        appBar: buildAppBar(context),
+        body: buildBody(context, isFavoritesView),
+      ),
     );
   }
 

@@ -1,9 +1,11 @@
+import 'package:cocdaily_app/core/constants/app/app_constants.dart';
 import 'package:cocdaily_app/core/extensions/context_extension.dart';
 import 'package:cocdaily_app/core/extensions/string_extension.dart';
 import 'package:cocdaily_app/utils/locale_keys.g.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../core/constants/app/app_router_constants.dart';
+import 'about_app_icon_and_button.dart';
 
 class AboutAppAlertDialog {
   TextEditingController controller = TextEditingController();
@@ -22,38 +24,8 @@ class AboutAppAlertDialog {
           content: SingleChildScrollView(
             child: ListBody(
               children: [
-                Row(
-                  children: [
-                    const Icon(Icons.policy),
-                    SizedBox(
-                      width: 5.w,
-                    ),
-                    TextButton(
-                      child: Text(LocaleKeys.privacy_policy.locale,
-                          style: context.textTheme.bodyText2),
-                      onPressed: () {
-                        Navigator.pushNamed(
-                            context, RouterConstant.PRIVACY_POLICY_VIEW);
-                      },
-                    )
-                  ],
-                ),
-                Row(
-                  children: [
-                    const Icon(Icons.web_asset),
-                    SizedBox(
-                      width: 5.w,
-                    ),
-                    TextButton(
-                      child: Text("Icons by svgrepo.com",
-                          style: context.textTheme.bodyText2),
-                      onPressed: () {
-                        Navigator.pushNamed(
-                            context, RouterConstant.SVG_COPYRIGHT_VIEW);
-                      },
-                    )
-                  ],
-                ),
+                buildPrivacyPolicy(),
+                buildSvgRepoCopyright(),
               ],
             ),
           ),
@@ -71,5 +43,21 @@ class AboutAppAlertDialog {
         );
       },
     );
+  }
+
+  AboutAppIconAndButton buildSvgRepoCopyright() {
+    return AboutAppIconAndButton(
+                textButtonTitle: ApplicationConstants.svgRepoCopyright,
+                routeName: RouterConstant.SVG_COPYRIGHT_VIEW,
+                icon: Icons.web_asset,
+              );
+  }
+
+  AboutAppIconAndButton buildPrivacyPolicy() {
+    return AboutAppIconAndButton(
+                textButtonTitle: LocaleKeys.privacy_policy.locale,
+                routeName: RouterConstant.PRIVACY_POLICY_VIEW,
+                icon: Icons.policy,
+              );
   }
 }
