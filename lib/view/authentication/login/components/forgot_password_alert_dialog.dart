@@ -17,47 +17,59 @@ class ForgotPasswordAlertDialog {
       barrierDismissible: true,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text(
-            LocaleKeys.password_reset.locale,
-            style: context.textTheme.headline3!.copyWith(
-              color: Colors.white,
-            ),
-          ),
+          title: buildResetPasswordTitle(context),
           content: SingleChildScrollView(
             child: ListBody(
               children: [
-                CustomTextFormField(
-                  controller: controller,
-                  labelText: LocaleKeys.email.locale,
-                  icon: Icon(
-                    Icons.email,
-                    color: context.customColors!.doveGray,
-                    size: 20.h,
-                  ),
-                  hint: LocaleKeys.email.locale,
-                  keyboardType: TextInputType.emailAddress,
-                ),
+                buildEmail(context),
               ],
             ),
           ),
           actions: [
-            TextButton(
-              child: Text(
-                LocaleKeys.password_reset.locale,
-                style: context.textTheme.bodyText2,
-              ),
-              onPressed: () {
-                context
-                    .read<ForgotPasswordCubit>()
-                    .resetPassword(context, controller.text);
-                FavoritesSnackBar().showSnackFavorites(
-                    context, LocaleKeys.password_reset_email_sent.locale,);
-                Navigator.of(context).pop();
-              },
-            ),
+            buildResetPasswordButton(context),
           ],
         );
       },
     );
+  }
+
+  TextButton buildResetPasswordButton(BuildContext context) {
+    return TextButton(
+            child: Text(
+              LocaleKeys.password_reset.locale,
+              style: context.textTheme.bodyText2,
+            ),
+            onPressed: () {
+              context
+                  .read<ForgotPasswordCubit>()
+                  .resetPassword(context, controller.text);
+              FavoritesSnackBar().showSnackFavorites(
+                  context, LocaleKeys.password_reset_email_sent.locale,);
+              Navigator.of(context).pop();
+            },
+          );
+  }
+
+  CustomTextFormField buildEmail(BuildContext context) {
+    return CustomTextFormField(
+                controller: controller,
+                labelText: LocaleKeys.email.locale,
+                icon: Icon(
+                  Icons.email,
+                  color: context.customColors!.doveGray,
+                  size: 20.h,
+                ),
+                hint: LocaleKeys.email.locale,
+                keyboardType: TextInputType.emailAddress,
+              );
+  }
+
+  Text buildResetPasswordTitle(BuildContext context) {
+    return Text(
+          LocaleKeys.password_reset.locale,
+          style: context.textTheme.headline3!.copyWith(
+            color: Colors.white,
+          ),
+        );
   }
 }

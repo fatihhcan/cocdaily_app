@@ -9,7 +9,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/base/cubits/favorite_cubit/favorite_cubit.dart';
-import '../../../../core/base/cubits/language_cubit/language_cubit.dart';
 
 class ProductList extends StatelessWidget {
   final String? cardBackgroundName;

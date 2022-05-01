@@ -3,7 +3,6 @@ import 'package:cocdaily_app/core/extensions/context_extension.dart';
 import 'package:cocdaily_app/core/extensions/string_extension.dart';
 import 'package:cocdaily_app/utils/locale_keys.g.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../core/constants/app/app_router_constants.dart';
 import 'about_app_icon_and_button.dart';
 
@@ -15,12 +14,7 @@ class AboutAppAlertDialog {
       barrierDismissible: true,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text(
-            LocaleKeys.about_app.locale,
-            style: context.textTheme.headline3!.copyWith(
-              color: Colors.white,
-            ),
-          ),
+          title: aboutAppTitle(context),
           content: SingleChildScrollView(
             child: ListBody(
               children: [
@@ -30,19 +24,32 @@ class AboutAppAlertDialog {
             ),
           ),
           actions: [
-            TextButton(
-              child: Text(
-                LocaleKeys.ok.locale,
-                style: context.textTheme.bodyText2,
-              ),
-              onPressed: () {
-                Navigator.pop(context);
-              },
-            ),
+            buildSelectButton(context),
           ],
         );
       },
     );
+  }
+
+  Text aboutAppTitle(BuildContext context) {
+    return Text(
+          LocaleKeys.about_app.locale,
+          style: context.textTheme.headline3!.copyWith(
+            color: Colors.white,
+          ),
+        );
+  }
+
+  TextButton buildSelectButton(BuildContext context) {
+    return TextButton(
+            child: Text(
+              LocaleKeys.ok.locale,
+              style: context.textTheme.bodyText2,
+            ),
+            onPressed: () {
+              Navigator.pop(context);
+            },
+          );
   }
 
   AboutAppIconAndButton buildSvgRepoCopyright() {

@@ -13,35 +13,47 @@ class LanguageAlertDialog {
       barrierDismissible: true,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text(
-            LocaleKeys.language.locale,
-            style: context.textTheme.headline3!.copyWith(
-              color: Colors.white,
-            ),
-          ),
+          title: buildLanguageTitle(context),
           content: SingleChildScrollView(
             child: ListBody(
               children: [
-                LanguageSettingsListTile(
-                  localeEN: LocaleConstant.EN_LOCALE,
-                  localeTR: LocaleConstant.TR_LOCALE,
-                ),
+                buildListTile(),
               ],
             ),
           ),
           actions: [
-            TextButton(
-              child: Text(
-                LocaleKeys.select_lang.locale,
-                style: context.textTheme.bodyText2,
-              ),
-              onPressed: () {
-                Navigator.pop(context);
-              },
-            ),
+            buildSelectButton(context),
           ],
         );
       },
     );
+  }
+
+  LanguageSettingsListTile buildListTile() {
+    return LanguageSettingsListTile(
+                localeEN: LocaleConstant.EN_LOCALE,
+                localeTR: LocaleConstant.TR_LOCALE,
+              );
+  }
+
+  TextButton buildSelectButton(BuildContext context) {
+    return TextButton(
+            child: Text(
+              LocaleKeys.select_lang.locale,
+              style: context.textTheme.bodyText2,
+            ),
+            onPressed: () {
+              Navigator.pop(context);
+            },
+          );
+  }
+
+  Text buildLanguageTitle(BuildContext context) {
+    return Text(
+          LocaleKeys.language.locale,
+          style: context.textTheme.headline3!.copyWith(
+            color: Colors.white,
+          ),
+        );
   }
 }

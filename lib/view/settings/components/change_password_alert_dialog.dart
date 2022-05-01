@@ -18,7 +18,7 @@ class ChangePasswordAlertDialog {
       builder: (BuildContext context) {
         return AlertDialog(
           title: Text(
-            LocaleKeys.change_password.locale,
+            buildChangePasswordTitle.locale,
             style: context.textTheme.headline3!.copyWith(
               color: Colors.white,
             ),
@@ -41,6 +41,8 @@ class ChangePasswordAlertDialog {
       },
     );
   }
+
+  String get buildChangePasswordTitle => LocaleKeys.change_password;
 
   TextButton buildChangePasswordButton(BuildContext context) {
     return TextButton(

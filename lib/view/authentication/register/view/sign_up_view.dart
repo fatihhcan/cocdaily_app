@@ -55,9 +55,7 @@ class SignUpView extends StatelessWidget {
         SizedBox(
           height: 25.h,
         ),
-        Text(LocaleKeys.welcome_to.locale,
-            style: context.textTheme.headline1!
-                .copyWith(fontWeight: FontWeight.w500)),
+        buildWelcomeText(context),
         appLogoBuild(),
         SizedBox(
           height: 60.h,
@@ -79,6 +77,12 @@ class SignUpView extends StatelessWidget {
         backgroundBottomWidgetBuild(context)
       ],
     );
+  }
+
+  Text buildWelcomeText(BuildContext context) {
+    return Text(LocaleKeys.welcome_to.locale,
+          style: context.textTheme.headline1!
+              .copyWith(fontWeight: FontWeight.w500));
   }
 
   AuthBackGroundBottom backgroundBottomWidgetBuild(BuildContext context) => AuthBackGroundBottom(
