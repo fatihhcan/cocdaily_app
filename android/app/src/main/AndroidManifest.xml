@@ -2,7 +2,7 @@
     package="com.example.cocdaily_app">
     <uses-permission android:name="android.permission.INTERNET" />
    <application
-        android:label="cocdaily_app"
+        android:label="Cocdaily"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

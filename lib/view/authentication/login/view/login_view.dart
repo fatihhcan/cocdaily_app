@@ -37,7 +37,9 @@ class LoginView extends StatelessWidget {
           }
         },
         builder: (context, state) {
-          return buildScaffold(context, state);
+          return WillPopScope(
+            onWillPop: () async => false,
+            child: buildScaffold(context, state));
         },
       ),
     );

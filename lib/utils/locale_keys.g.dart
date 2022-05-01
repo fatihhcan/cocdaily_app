@@ -47,5 +47,6 @@ abstract class  LocaleKeys {
   static const en_lang = 'en_lang';
   static const svg_copyright = 'svg_copyright';
   static const do_not_have_any_favorite_cocktails = 'do_not_have_any_favorite_cocktails';
+  static const change_password_info = 'change_password_info';
 
 }

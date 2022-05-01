@@ -26,6 +26,7 @@ class ChangePasswordAlertDialog {
           content: SingleChildScrollView(
             child: ListBody(
               children: [
+                
                 CustomTextFormField(
                   controller: controller,
                   labelText: LocaleKeys.new_password.locale,
@@ -37,6 +38,8 @@ class ChangePasswordAlertDialog {
                   hint: LocaleKeys.new_password.locale,
                   keyboardType: TextInputType.emailAddress,
                 ),
+                SizedBox(height: 15.h,),
+                Text(LocaleKeys.change_password_info.locale, style: context.textTheme.bodyText2,),
 
               ],
             ),
@@ -48,12 +51,14 @@ class ChangePasswordAlertDialog {
                 style: context.textTheme.bodyText2,
               ),
               onPressed: () {
-                context
+           if (controller.text.isNotEmpty && controller.text.length >= 6) {
+                  context
                     .read<ChangePasswordCubit>()
                     .changePassword(context, controller.text);
                 FavoritesSnackBar().showSnackFavorites(
                     context, LocaleKeys.password_has_been_changed.locale,);
                Navigator.pushNamed(context, RouterConstant.LOGIN_VIEW);
+           } 
               },
             ),
           ],

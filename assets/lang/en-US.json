@@ -45,7 +45,9 @@
     "tr_lang": "Turkish",
     "en_lang": "English",
     "svg_copyright": "SVG Copyright",
-    "do_not_have_any_favorite_cocktails": "You do not have any favorite cocktails."
+    "do_not_have_any_favorite_cocktails": "You do not have any favorite cocktails.",
+    "change_password_info": "The password must be at least 6 digits."
+
 
 
 

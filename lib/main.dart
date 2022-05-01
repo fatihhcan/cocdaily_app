@@ -6,6 +6,7 @@ import 'package:cocdaily_app/core/base/cubits/favorite_cubit/favorite_cubit.dart
 import 'package:cocdaily_app/core/base/cubits/home_cubit/home_cubit.dart';
 import 'package:cocdaily_app/core/base/cubits/language_cubit/language_cubit.dart';
 import 'package:cocdaily_app/core/base/cubits/product_cubit/product_cubit.dart';
+import 'package:cocdaily_app/core/base/cubits/product_detail_cubit/product_detail_cubit.dart';
 import 'package:cocdaily_app/core/base/cubits/share_social_media_cubit/share_social_media_cubit.dart';
 import 'package:cocdaily_app/core/constants/init/theme/light/app_theme_light.dart';
 import 'package:easy_localization/easy_localization.dart';
@@ -58,6 +59,8 @@ class MyApp extends StatelessWidget {
         create: (_) => ChangePasswordCubit()),
         BlocProvider(
         create: (_) => LanguageCubit()),
+        BlocProvider(
+        create: (_) => ProductDetailCubit()),
       ],
       child: ScreenUtilInit(
         designSize: const Size(428, 926),

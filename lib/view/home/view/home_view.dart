@@ -12,6 +12,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../core/base/cubits/favorite_cubit/favorite_cubit.dart';
+import '../../../core/base/cubits/product_detail_cubit/product_detail_cubit.dart';
 import '../../../core/constants/image/image_constants.dart';
 import '../../../core/constants/image/image_path.dart';
 import '../../../core/utility/shared/shared_prefs.dart';
@@ -41,7 +42,9 @@ class HomeView extends StatelessWidget {
               if (state is HomeCubitLoading) {
                 return const CustomProgressIndicator();
               } else if (state is HomeCubitCompleted) {
-                return buildBody(context);
+                return WillPopScope(
+                  onWillPop: () async => false,
+                  child: buildBody(context));
               } else {
                 return const CustomProgressIndicator();
               }
@@ -112,28 +115,8 @@ class HomeView extends StatelessWidget {
                   urlPhoto: e["urlPhoto"],
                   cardBackgroundName: SVGImagePaths.instance!.favoritesCardSVG,
                   favoriteIcon: Icons.close,
-                  onPressedNextDetailDetector: () => context
-                      .read<FavoriteCubit>()
-                      .nextDetailViewNavigate(
-                          context,
-                          e["name"],
-                          e["urlPhoto"],
-                          e["recipe"],
-                          context.customColors!.yourPink,
-                          snapshot,
-                          e,
-                          true),
-                  onPressedNextDetail: () => context
-                      .read<FavoriteCubit>()
-                      .nextDetailViewNavigate(
-                          context,
-                          e["name"],
-                          e["urlPhoto"],
-                          e["recipe"],
-                          context.customColors!.yourPink,
-                          snapshot,
-                          e,
-                          true),
+                  onPressedNextDetailDetector: () =>context.read<ProductDetailCubit>().nextDetailView(context, e, true, context.customColors!.yourPink, snapshot),
+                  onPressedNextDetail: () =>context.read<ProductDetailCubit>().nextDetailView(context, e, true, context.customColors!.yourPink, snapshot),
                   onPressedFavorite: (() {
                     context
                         .read<FavoriteCubit>()

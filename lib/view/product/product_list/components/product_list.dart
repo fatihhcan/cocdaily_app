@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:cocdaily_app/core/base/cubits/product_detail_cubit/product_detail_cubit.dart';
 import 'package:cocdaily_app/core/components/widgets/progress_indicator/custom_progress_indicator.dart';
 import 'package:cocdaily_app/core/constants/app/app_router_constants.dart';
 import 'package:cocdaily_app/core/extensions/context_extension.dart';
@@ -90,52 +91,8 @@ class ProductList extends StatelessWidget {
   CocktailCard buildCocktailCard(BuildContext context,
       QueryDocumentSnapshot<Object?> e, AsyncSnapshot<dynamic> snapshot) {
     return CocktailCard(
-        onPressedNextDetailDetector: () async {
-          if (context.read<LanguageCubit>().state == false) {
-            await context.read<FavoriteCubit>().nextDetailViewNavigate(
-                context,
-                e["name"],
-                e["urlPhoto"],
-                e["recipeTR"],
-                cardBackgroundColor!,
-                snapshot,
-                e,
-                isFavoritesView ? true : false);
-          } else {
-            await context.read<FavoriteCubit>().nextDetailViewNavigate(
-                context,
-                e["name"],
-                e["urlPhoto"],
-                e["recipe"],
-                cardBackgroundColor!,
-                snapshot,
-                e,
-                isFavoritesView ? true : false);
-          }
-        },
-        onPressedNextDetail: () async {
-          if (context.read<LanguageCubit>().state == false) {
-            await context.read<FavoriteCubit>().nextDetailViewNavigate(
-                context,
-                e["name"],
-                e["urlPhoto"],
-                e["recipeTR"],
-                cardBackgroundColor!,
-                snapshot,
-                e,
-                isFavoritesView ? true : false);
-          } else {
-            await context.read<FavoriteCubit>().nextDetailViewNavigate(
-                context,
-                e["name"],
-                e["urlPhoto"],
-                e["recipe"],
-                cardBackgroundColor!,
-                snapshot,
-                e,
-                isFavoritesView ? true : false);
-          }
-        },
+        onPressedNextDetailDetector: () =>context.read<ProductDetailCubit>().nextDetailView(context, e, isFavoritesView, cardBackgroundColor, snapshot),
+        onPressedNextDetail:  () =>context.read<ProductDetailCubit>().nextDetailView(context, e, isFavoritesView, cardBackgroundColor, snapshot),
         favoriteIcon: iconFavorite!,
         onPressedFavorite: (() {
           context
