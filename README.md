@@ -23,6 +23,23 @@
 
 ![Color Hunt Palette 907fa4a58faaa6d6d6ededd0](https://user-images.githubusercontent.com/45641833/166120261-27e0d3d4-d356-410b-823d-a3de05bd9807.png) ![Color Hunt Palette ffc7c7ffe2e2f6f6f68785a2](https://user-images.githubusercontent.com/45641833/166120267-17630b95-5adb-42d9-a9f7-b4ae591c6fac.png)
 
+## Mockup:
+- Splash
+- Login
+- Register
+- Forgot/Change Password - Language (Pop-up)
+- Home
+- Product List
+- Product Detail
+- Favorites
+- Settings
+- Privacy Policy
+- SVG Repo Copyright
+
+![Cocdaily -  Mockup](https://user-images.githubusercontent.com/45641833/166814939-0c240332-09f3-4054-a810-31e09a601798.svg)
+
+
+
 
 ## Subject:
 
