@@ -1,4 +1,4 @@
-package com.example.cocdaily_app
+package com.cocdaily.cocdaily_app
 
 import io.flutter.embedding.android.FlutterActivity
 

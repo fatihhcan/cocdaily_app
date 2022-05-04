@@ -7,9 +7,9 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:1003410374394:android:2e9a23e66d1abf94e01343",
+        "mobilesdk_app_id": "1:1003410374394:android:ce292a7cebecfaa7e01343",
         "android_client_info": {
-          "package_name": "com.example.cocdaily_app"
+          "package_name": "com.cocdaily.cocdaily_app"
         }
       },
       "oauth_client": [
