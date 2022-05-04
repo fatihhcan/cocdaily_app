@@ -12,11 +12,10 @@ import '../cubits/product_cubit/product_cubit.dart';
 import '../cubits/product_detail_cubit/product_detail_cubit.dart';
 import '../cubits/share_social_media_cubit/share_social_media_cubit.dart';
 
-BuildContext? context;
 
 class BlocProvidersList {
   List<BlocProvider> multiBlocProviders = [
-    BlocProvider<LoginCubit>(create: (_) => LoginCubit(context!)),
+    BlocProvider<LoginCubit>(create: (_) => LoginCubit()),
     BlocProvider<SignUpCubit>(create: (_) => SignUpCubit()),
     BlocProvider<ProductCubit>(create: (_) => ProductCubit()),
     BlocProvider<FavoriteCubit>(create: (_) => FavoriteCubit()),

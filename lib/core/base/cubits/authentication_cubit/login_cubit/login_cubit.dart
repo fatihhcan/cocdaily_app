@@ -12,10 +12,9 @@ part 'login_cubit.freezed.dart';
 part 'login_state.dart';
 
 class LoginCubit extends Cubit<LoginState> {
-  LoginCubit(this.context) : super(const LoginState.initial());
+  LoginCubit() : super(const LoginState.initial());
 
   final FirebaseAuth _auth = FirebaseAuth.instance;
-  final BuildContext context;
 
   void emailChanged(String value) {
     final email = Email.dirty(value);

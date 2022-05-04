@@ -23,7 +23,7 @@ class LoginView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => LoginCubit(context),
+      create: (context) => LoginCubit(),
       child: BlocConsumer<LoginCubit, LoginState>(
         listenWhen: (p, c) => p.status != c.status,
         listener: (context, state) {
