@@ -57,6 +57,8 @@
 
 - **Share** was used for social media sharing.
 
+- **Screen Util** adapting screen and font size.
+
 
 ## Flutter Packages Available in the Project:
 
