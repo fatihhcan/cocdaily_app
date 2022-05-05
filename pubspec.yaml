@@ -27,8 +27,6 @@ dependencies:
   formz: ^0.4.1
   freezed_annotation: any
   google_fonts: ^2.3.1
-  json_annotation: ^4.4.0
-  json_serializable: ^6.1.4
   lottie: ^1.2.2
   share: ^2.0.4
   shared_preferences: ^2.0.13
