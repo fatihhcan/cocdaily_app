@@ -44,6 +44,8 @@
 - **BLoC/Cubit** was used for State Management.
 
 - **SharedPrefs** was used for the caching process.
+- 
+- **Freezed** code generation.
 
 - For Back-End services **Firestore Database - Storage - Authentication**.
 
@@ -85,6 +87,8 @@
 **formz:** A unified form representation in Dart which aims to simplify form representation and validation in a generic way.
 
 **freezed_annotation:** Annotations for the freezed code-generator. This package does nothing without freezed too.
+
+**freezed:** Code generation for immutable classes that has a simple syntax/API without compromising on the features.
 
 **google_fonts:** A package to include fonts from fonts.google.com in your Flutter app.
 
