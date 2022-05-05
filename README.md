@@ -44,7 +44,7 @@
 - **BLoC/Cubit** was used for State Management.
 
 - **SharedPrefs** was used for the caching process.
-- 
+
 - **Freezed** code generation.
 
 - For Back-End services **Firestore Database - Storage - Authentication**.
