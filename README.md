@@ -36,9 +36,7 @@
 - Privacy Policy
 - SVG Repo Copyright
 
-![Cocdaily -  Mockup](https://user-images.githubusercontent.com/45641833/166814939-0c240332-09f3-4054-a810-31e09a601798.svg)
-
-
+<img width="920" alt="Screen Shot 2022-05-05 at 11 15 57" src="https://user-images.githubusercontent.com/45641833/166885941-31616637-cb6f-4923-b49d-325ea1f32431.png">
 
 
 ## Subject:
