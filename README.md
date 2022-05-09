@@ -36,8 +36,7 @@
 - Privacy Policy
 - SVG Repo Copyright
 
-<img width="920" alt="Screen Shot 2022-05-05 at 11 15 57" src="https://user-images.githubusercontent.com/45641833/166885941-31616637-cb6f-4923-b49d-325ea1f32431.png">
-
+<img width="1157" alt="Screen Shot 2022-05-09 at 08 02 02" src="https://user-images.githubusercontent.com/45641833/167343875-4f789c8b-ca99-4882-ba12-2bb0e12ad26d.png">
 
 ## Subject:
 
