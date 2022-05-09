@@ -102,9 +102,9 @@
 
 **webview_flutter:** A Flutter plugin that provides a WebView widget on Android and iOS.
 
-## Google Play Store
+## Store
 
 ![playstore](https://user-images.githubusercontent.com/45641833/166124105-91d09830-624a-41af-b8f4-49bddbfec583.svg)
 
-- [Google Play Store](https://play.google.com/)
+- [Google Play Store](https://play.google.com/store/apps/details?id=com.cocdaily.cocdaily_app)
 
